@@ -3,42 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AVIN | BTG — Gestão de Carteira</title>
+<title>AVIN | BTG Pactual — Gestão de Carteira</title>
 <style>
-:root{--gold:#b8953a;--dark:#0d0d0d;--bg:#f2f2f2;--white:#fff;--green:#1a7a3c;--red:#c0392b;--border:#ddd;--gray:#555}
+:root{--gold:#b8953a;--navy:#1b2a4a;--bg:#f2f2f2;--white:#fff;--green:#1a7a3c;--red:#c0392b;--border:#ddd;--gray:#555}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Arial,sans-serif}
 body{background:var(--bg);color:#222;min-height:100vh}
 
-/* HEADER */
-.hdr{background:#1b2a4a;padding:10px 24px;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+.hdr{background:var(--navy);padding:10px 24px;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:999;box-shadow:0 2px 10px rgba(0,0,0,.3)}
 .hdr-info{margin-left:auto;font-size:11px;color:#aab;text-align:right;line-height:1.6}
+.sync-status{font-size:11px;padding:3px 10px;border-radius:12px;margin-left:12px;font-weight:700}
+.sync-ok{background:#1a7a3c;color:#fff}
+.sync-err{background:#c0392b;color:#fff}
+.sync-load{background:#b8953a;color:#fff}
 
-/* NAV */
 .nav{background:#fff;border-bottom:3px solid var(--gold);display:flex;overflow-x:auto;position:sticky;top:45px;z-index:998}
 .nav-btn{padding:11px 18px;border:none;background:none;cursor:pointer;font-size:12px;font-weight:700;color:var(--gray);border-bottom:3px solid transparent;margin-bottom:-3px;white-space:nowrap;transition:.15s}
 .nav-btn:hover,.nav-btn.on{color:var(--gold);border-bottom-color:var(--gold);background:#fffdf5}
 
-/* PAGES */
 .pg{display:none;padding:18px;max-width:1440px;margin:0 auto}
 .pg.on{display:block}
 
-/* CARDS */
 .card{background:#fff;border-radius:8px;border:1px solid var(--border);padding:18px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.04)}
 .ctitle{font-size:12px;font-weight:800;color:var(--gold);text-transform:uppercase;letter-spacing:.6px;border-bottom:1px solid #f5edd8;padding-bottom:8px;margin-bottom:14px}
 
-/* GRIDS */
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:800px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:900px){.g2,.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
 
-/* KPIs */
-.kpi{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.kpi{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center}
 .kpi-lbl{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
 .kpi-val{font-size:20px;font-weight:800;color:#222}
 .kpi-sub{font-size:11px;color:#999;margin-top:3px}
 
-/* FORMS */
 label{display:block;font-size:11px;font-weight:700;color:#666;margin-bottom:3px;text-transform:uppercase;letter-spacing:.3px}
 input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:5px;font-size:13px;color:#222;background:#fff}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,149,58,.12)}
@@ -49,16 +47,14 @@ textarea{resize:vertical;font-family:monospace;font-size:12px}
 .f4{grid-template-columns:1fr 1fr 1fr 1fr}
 @media(max-width:600px){.f2,.f3,.f4{grid-template-columns:1fr}}
 
-/* BUTTONS */
 .btn{padding:8px 16px;border:none;border-radius:5px;cursor:pointer;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px;transition:.15s}
 .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:#9a7c2e}
-.btn-dark{background:var(--dark);color:#fff}.btn-dark:hover{background:#333}
+.btn-navy{background:var(--navy);color:#fff}.btn-navy:hover{background:#243860}
 .btn-green{background:var(--green);color:#fff}
-.btn-red{background:var(--red);color:#fff}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:#a02020}
 .btn-out{background:transparent;border:1.5px solid var(--gold);color:var(--gold)}.btn-out:hover{background:var(--gold);color:#fff}
 .btn-sm{padding:5px 10px;font-size:11px}
 
-/* TABLES */
 .twrap{overflow-x:auto;border-radius:6px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse;font-size:12px}
 th{background:#f7f3ea;color:#555;font-weight:800;padding:8px 9px;text-align:left;white-space:nowrap;border-bottom:2px solid var(--gold)}
@@ -69,48 +65,45 @@ tr:last-child td{border-bottom:none}
 .neg{color:var(--red);font-weight:700}
 .neu{color:#999}
 
-/* BADGES */
 .badge{padding:2px 7px;border-radius:10px;font-size:10px;font-weight:800}
 .b-green{background:#e8f5e9;color:#1a7a3c}
 .b-red{background:#ffebee;color:#c0392b}
 .b-gold{background:#fff8e1;color:#856404}
 .b-gray{background:#f5f5f5;color:#666}
+.b-navy{background:#e8eaf6;color:#1b2a4a}
 
-/* ALERTS */
 .alert{padding:9px 13px;border-radius:5px;font-size:12px;margin-bottom:10px}
 .a-info{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9}
 .a-warn{background:#fff8e1;color:#e65100;border:1px solid #ffe082}
 .a-ok{background:#e8f5e9;color:#1a7a3c;border:1px solid #a5d6a7}
+.a-err{background:#ffebee;color:#c0392b;border:1px solid #ffcdd2}
 
-/* PASTE AREA */
 .paste{border:2px dashed var(--gold);border-radius:7px;padding:14px;background:#fffdf5;margin-bottom:10px}
-
-/* SECTION TITLE */
 .stitle{font-size:15px;font-weight:800;color:#222;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .stitle::before{content:'';display:block;width:4px;height:18px;background:var(--gold);border-radius:2px}
 
-/* MODAL */
 .ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:2000;align-items:center;justify-content:center}
 .ov.open{display:flex}
-.modal{background:#fff;border-radius:10px;padding:22px;max-width:480px;width:92%;max-height:90vh;overflow-y:auto}
-.modal-title{font-size:15px;font-weight:800;margin-bottom:14px}
+.modal{background:#fff;border-radius:10px;padding:22px;max-width:520px;width:95%;max-height:90vh;overflow-y:auto}
+.modal-title{font-size:15px;font-weight:800;margin-bottom:14px;color:var(--navy)}
 .modal-foot{display:flex;gap:8px;margin-top:14px;justify-content:flex-end}
 
-/* IR TABLE COLORS */
 .ir-pos td{background:#f0fff4}
 .ir-neg td{background:#fff8e1}
-.ir-tot td{background:#0d0d0d;color:#fff;font-weight:800}
-
-/* YELLOW ROW (alias) */
 .y-row td{background:#fffde7}
 
-/* PDF AREA */
-#pdf-area{display:none}
-@media print{
-  .hdr,.nav,.no-print{display:none!important}
-  #pdf-area{display:block!important}
-  body{background:#fff}
-}
+/* ATUALIZAÇÃO RÁPIDA */
+.quick-update{background:linear-gradient(135deg,var(--navy),#243860);border-radius:10px;padding:20px;color:#fff;margin-bottom:16px}
+.quick-title{font-size:16px;font-weight:800;color:var(--gold);margin-bottom:4px}
+.quick-sub{font-size:12px;color:#aab;margin-bottom:14px}
+
+/* LOADING */
+.loading{display:flex;align-items:center;justify-content:center;padding:40px;color:#888;font-size:14px}
+.spinner{width:20px;height:20px;border:3px solid #ddd;border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite;margin-right:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PDF PRINT */
+#pdf-window{display:none}
 </style>
 </head>
 <body>
@@ -118,10 +111,12 @@ tr:last-child td{border-bottom:none}
 <!-- HEADER -->
 <div class="hdr">
   <div style="display:flex;align-items:center;gap:0;line-height:1">
-    <span style="font-size:20px;font-weight:300;letter-spacing:4px;color:#b8953a;font-family:'Segoe UI',Arial,sans-serif">AVIN</span>
+    <span style="font-size:20px;font-weight:300;letter-spacing:4px;color:var(--gold)">AVIN</span>
     <span style="color:#4a6080;font-size:22px;margin:0 10px;font-weight:100">|</span>
-    <span style="font-size:15px;font-weight:700;color:#fff;font-family:'Segoe UI',Arial,sans-serif;letter-spacing:.5px">BTG</span><span style="font-size:15px;font-weight:300;color:#fff;font-family:'Segoe UI',Arial,sans-serif;letter-spacing:.3px"> Pactual</span>
+    <span style="font-size:15px;font-weight:700;color:#fff;letter-spacing:.5px">BTG</span>
+    <span style="font-size:15px;font-weight:300;color:#fff;letter-spacing:.3px"> Pactual</span>
   </div>
+  <span id="sync-badge" class="sync-status sync-load" style="margin-left:16px">⏳ Conectando...</span>
   <div class="hdr-info">
     <div>Antonio Luis Ramos de Resende Junior</div>
     <div>Conta 002403079 · Ag. 0001 · Banco 208 BTG PACTUAL</div>
@@ -130,137 +125,137 @@ tr:last-child td{border-bottom:none}
 
 <!-- NAV -->
 <div class="nav">
-  <button class="nav-btn on" onclick="pg('dashboard')">📊 Dashboard</button>
-  <button class="nav-btn" onclick="pg('operacoes')">📋 Operações</button>
-  <button class="nav-btn" onclick="pg('carteira')">💼 Carteira</button>
-  <button class="nav-btn" onclick="pg('ir')">🧾 IR / Competências</button>
-  <button class="nav-btn" onclick="pg('dividendos')">💰 Dividendos & JCP</button>
-  <button class="nav-btn" onclick="pg('liquidez')">🏦 Liquidez</button>
-  <button class="nav-btn" onclick="pg('rendafixa')">📈 Renda Fixa</button>
-  <button class="nav-btn" onclick="pg('relatorios')">📄 Relatórios</button>
-  <button class="nav-btn" onclick="pg('config')">⚙️ Config</button>
+  <button class="nav-btn on" onclick="pg('dashboard',this)">📊 Dashboard</button>
+  <button class="nav-btn" onclick="pg('rapido',this)">⚡ Atualização Rápida</button>
+  <button class="nav-btn" onclick="pg('operacoes',this)">📋 Operações</button>
+  <button class="nav-btn" onclick="pg('carteira',this)">💼 Carteira</button>
+  <button class="nav-btn" onclick="pg('ir',this)">🧾 IR</button>
+  <button class="nav-btn" onclick="pg('dividendos',this)">💰 Dividendos</button>
+  <button class="nav-btn" onclick="pg('liquidez',this)">🏦 Liquidez</button>
+  <button class="nav-btn" onclick="pg('rendafixa',this)">📈 Renda Fixa</button>
+  <button class="nav-btn" onclick="pg('relatorios',this)">📄 Relatórios</button>
+  <button class="nav-btn" onclick="pg('config',this)">⚙️ Config</button>
 </div>
 
 <!-- ======= DASHBOARD ======= -->
 <div id="pg-dashboard" class="pg on">
   <div class="stitle">Visão Geral · <span id="dt-hoje"></span></div>
-
   <div class="g4" style="margin-bottom:14px">
-    <div class="kpi"><div class="kpi-lbl">Patrimônio Total</div><div class="kpi-val">R$ 36.685.711</div><div class="kpi-sub">Dados de 16/04/2026</div></div>
-    <div class="kpi"><div class="kpi-lbl">Carteira de Ações</div><div class="kpi-val">R$ 32.099.216</div><div class="kpi-sub neg" style="color:var(--red)">Renda Variável</div></div>
-    <div class="kpi"><div class="kpi-lbl">Saldo p/ Compra</div><div class="kpi-val pos">R$ 949,02</div><div class="kpi-sub">Conta Investimento</div></div>
-    <div class="kpi"><div class="kpi-lbl">Lançamentos Futuros</div><div class="kpi-val" style="color:var(--gold)">R$ 1.604.168</div><div class="kpi-sub">Valores em trânsito</div></div>
+    <div class="kpi"><div class="kpi-lbl">Patrimônio Total</div><div class="kpi-val" id="k-pat">—</div><div class="kpi-sub">BTG Pactual</div></div>
+    <div class="kpi"><div class="kpi-lbl">Carteira de Ações</div><div class="kpi-val" id="k-acoes">—</div><div class="kpi-sub" id="k-rent">Renda Variável</div></div>
+    <div class="kpi"><div class="kpi-lbl">Saldo Disponível</div><div class="kpi-val pos" id="k-saldo">—</div><div class="kpi-sub">Para compra</div></div>
+    <div class="kpi"><div class="kpi-lbl">Lançamentos Futuros</div><div class="kpi-val" style="color:var(--gold)" id="k-fut">—</div><div class="kpi-sub">Em trânsito</div></div>
   </div>
-
   <div class="g2">
     <div class="card">
-      <div class="ctitle">Alocação da Conta (16/04/2026)</div>
-      <table>
-        <tr><td>CDB (BTG + Outros)</td><td style="text-align:right"><strong>R$ 632.686,62</strong></td></tr>
-        <tr><td>CDCA BTG Commodities</td><td style="text-align:right">R$ 389.450,48</td></tr>
-        <tr><td>CRI BTG Pactual</td><td style="text-align:right">R$ 69.460,56</td></tr>
-        <tr><td>CRA BTG Commodities</td><td style="text-align:right">R$ 1.094.739,68</td></tr>
-        <tr><td>Compromissada BTG</td><td style="text-align:right">R$ 795.039,90</td></tr>
-        <tr><td>Renda Variável (Ações)</td><td style="text-align:right">R$ 32.099.216,30</td></tr>
-        <tr style="background:#f8f5ef"><td><strong>Total Investido</strong></td><td style="text-align:right"><strong>R$ 35.080.593,54</strong></td></tr>
-        <tr><td>Saldo Conta Investimento</td><td style="text-align:right">R$ 949,02</td></tr>
-        <tr style="background:#fffde7"><td><strong>🟡 Valores em Trânsito</strong></td><td style="text-align:right;color:var(--gold)"><strong>R$ 1.604.168,51</strong></td></tr>
-        <tr><td>Saldo Conta Corrente</td><td style="text-align:right">R$ 2.043,10</td></tr>
-        <tr style="background:#f0fff4"><td><strong>Patrimônio Total</strong></td><td style="text-align:right" class="pos"><strong>R$ 36.685.711,07</strong></td></tr>
-      </table>
+      <div class="ctitle">Alocação da Conta</div>
+      <table id="tb-dash-aloc"><tr><td colspan="2" class="loading"><div class="spinner"></div>Carregando...</td></tr></table>
     </div>
-
+    <div class="card">
+      <div class="ctitle">Últimas Operações</div>
+      <div class="twrap"><table><thead><tr><th>Data</th><th>Ação</th><th>C/V</th><th>Qtd</th><th>Preço</th><th>Resultado</th></tr></thead><tbody id="tb-ult-ops"></tbody></table></div>
+    </div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ctitle">Resumo IR</div>
+      <div id="dash-ir-resumo"><div class="loading"><div class="spinner"></div>Carregando...</div></div>
+    </div>
     <div class="card">
       <div class="ctitle">Lançamentos Futuros</div>
-      <table>
-        <thead><tr><th>Data</th><th>Descrição</th><th>Valor Estimado</th></tr></thead>
-        <tbody>
-          <tr><td>16/04/26</td><td>Venda B3SA3 / Compra BEEF3</td><td class="pos">R$ 29.282,86</td></tr>
-          <tr><td>17/04/26</td><td>Saldo estimado do dia</td><td class="pos">R$ 29.282,86</td></tr>
-          <tr><td>20/04/26</td><td>Saldo estimado</td><td class="pos">R$ 1.248.382,86</td></tr>
-          <tr><td>30/04/26</td><td>Saldo estimado</td><td class="pos">R$ 1.275.937,82</td></tr>
-          <tr><td>04/05/26</td><td>Saldo estimado</td><td class="pos">R$ 1.276.934,00</td></tr>
-          <tr><td>20/05/26</td><td>Saldo estimado</td><td class="pos">R$ 1.288.789,26</td></tr>
-          <tr><td>12/06/26</td><td>Saldo estimado</td><td class="pos">R$ 1.325.050,21</td></tr>
-        </tbody>
-      </table>
-      <div class="alert a-warn" style="margin-top:10px">⚠️ Valores estimados sujeitos a alteração conforme operações do dia.</div>
+      <div class="twrap"><table><thead><tr><th>Data</th><th>Descrição</th><th>Valor Est.</th></tr></thead><tbody id="tb-dash-fut">
+        <tr><td>17/04/26</td><td>Saldo estimado do dia</td><td class="pos">R$ 29.282,86</td></tr>
+        <tr><td>20/04/26</td><td>Saldo estimado</td><td class="pos">R$ 1.248.382,86</td></tr>
+        <tr><td>30/04/26</td><td>Saldo estimado</td><td class="pos">R$ 1.275.937,82</td></tr>
+        <tr><td>04/05/26</td><td>Saldo estimado</td><td class="pos">R$ 1.276.934,00</td></tr>
+        <tr><td>20/05/26</td><td>Saldo estimado</td><td class="pos">R$ 1.288.789,26</td></tr>
+      </tbody></table></div>
     </div>
+  </div>
+</div>
+
+<!-- ======= ATUALIZAÇÃO RÁPIDA ======= -->
+<div id="pg-rapido" class="pg">
+  <div class="quick-update">
+    <div class="quick-title">⚡ Atualização Rápida do Dia</div>
+    <div class="quick-sub">Atualize a carteira em menos de 5 minutos com base no portal BTG</div>
   </div>
 
   <div class="g2">
     <div class="card">
-      <div class="ctitle">Resumo IR Acumulado</div>
-      <div class="alert a-warn">IR Projetado Acumulado Jul/2021→Mar/2026: <strong>-R$ 2.768.308,04</strong></div>
-      <div class="alert a-ok">Resultado Projetado Abril 2026: <strong>R$ 837.711,70</strong> (lucro em curso)</div>
-      <div class="alert a-info">IR Projetado Abril 2026 (15%): <strong>R$ 125.656,76</strong></div>
+      <div class="ctitle">📈 PASSO 1 — Atualizar Preços</div>
+      <div class="alert a-info">No portal BTG, vá em "Meus Investimentos" → copie os preços de mercado e cole abaixo. Formato: TICKER PREÇO (um por linha)</div>
+      <textarea id="precos-txt" rows="12" placeholder="COGN3 3.31&#10;CYRE3 28.03&#10;BHIA3 2.95&#10;B3SA3 19.61&#10;BBAS3 24.92&#10;LAVV3 15.38&#10;..."></textarea>
+      <button class="btn btn-gold" style="width:100%;margin-top:8px" onclick="aplicarPrecos()">✅ Aplicar Preços</button>
+      <div id="precos-msg" style="margin-top:8px"></div>
     </div>
+
     <div class="card">
-      <div class="ctitle">Últimas Operações Registradas</div>
-      <div class="twrap">
-        <table>
-          <thead><tr><th>Data</th><th>Ação</th><th>C/V</th><th>Qtd</th><th>Preço</th><th>Resultado</th></tr></thead>
-          <tbody>
-            <tr><td>10/04/26</td><td>BRAV3</td><td><span class="badge b-red">V</span></td><td>42.000</td><td>R$21,50</td><td class="pos">R$260.400</td></tr>
-            <tr><td>09/04/26</td><td>COGN3</td><td><span class="badge b-red">V</span></td><td>180.000</td><td>R$3,31</td><td class="pos">R$199.310</td></tr>
-            <tr><td>07/04/26</td><td>JHSF3</td><td><span class="badge b-red">V</span></td><td>53.000</td><td>R$11,33</td><td class="pos">R$378.001</td></tr>
-            <tr><td>07/04/26</td><td>CYRE4</td><td><span class="badge b-green">C</span></td><td>10.500</td><td>R$23,35</td><td class="neu">—</td></tr>
-            <tr><td>07/04/26</td><td>BHIA3</td><td><span class="badge b-green">C</span></td><td>39.000</td><td>R$2,74</td><td class="neu">—</td></tr>
-          </tbody>
-        </table>
+      <div class="ctitle">📋 PASSO 2 — Registrar Operações do Dia</div>
+      <div class="alert a-info">Houve compra ou venda hoje? Cole a nota de corretagem abaixo.</div>
+      <div class="paste">
+        <label>Cole o texto da seção "Negócios realizados" da nota BTG:</label>
+        <textarea id="nota-txt" rows="6" placeholder="1-BOVESPA V VISTA COGN3 ON 180000 3,31 595.440,00 C&#10;1-BOVESPA C VISTA BEEF3 ON 3000 4,45 13.350,00 D"></textarea>
       </div>
+      <div class="frow f2">
+        <div><label>Data Pregão</label><input type="date" id="nota-dt" value=""></div>
+        <div><label>Nr. Nota</label><input type="text" id="nota-nr" placeholder="31234466"></div>
+      </div>
+      <button class="btn btn-gold" style="width:100%" onclick="parsearNota()">🔍 Importar Operações</button>
+      <div id="nota-msg" style="margin-top:8px"></div>
     </div>
+  </div>
+
+  <div class="card">
+    <div class="ctitle">💰 PASSO 3 — Lançar Dividendos/JCP do Extrato</div>
+    <div class="paste">
+      <label>Cole linhas do extrato BTG com dividendos e JCP:</label>
+      <textarea id="ext-txt" rows="5" placeholder="17/03/2026 DIVIDENDOS - À VISTA s/ LAVVI ON NM - LAVV3 9.225,60 14.252,86&#10;01/04/2026 JUROS S/ CAPITAL - À VISTA s/ ITAUSA PN N1 400,01 2.351,33"></textarea>
+    </div>
+    <button class="btn btn-gold" onclick="parsearExtrato()">🔍 Detectar e Lançar</button>
+    <div id="ext-msg" style="margin-top:8px"></div>
+  </div>
+
+  <div class="card" style="background:var(--navy);color:#fff">
+    <div class="ctitle" style="color:var(--gold);border-color:#243860">📊 PASSO 4 — Atualizar Saldo e Patrimônio</div>
+    <div class="frow f4">
+      <div><label style="color:#aab">Patrimônio Total</label><input type="number" step="0.01" id="q-pat" placeholder="36685711.07" style="background:#243860;color:#fff;border-color:#4a6080"></div>
+      <div><label style="color:#aab">Saldo p/ Compra</label><input type="number" step="0.01" id="q-saldo" placeholder="949.02" style="background:#243860;color:#fff;border-color:#4a6080"></div>
+      <div><label style="color:#aab">Valores em Trânsito</label><input type="number" step="0.01" id="q-transito" placeholder="1604168.51" style="background:#243860;color:#fff;border-color:#4a6080"></div>
+      <div><label style="color:#aab">Saldo Conta Corrente</label><input type="number" step="0.01" id="q-cc" placeholder="2043.10" style="background:#243860;color:#fff;border-color:#4a6080"></div>
+    </div>
+    <button class="btn btn-gold" onclick="salvarSaldos()">💾 Salvar Saldos</button>
+    <div id="saldo-msg" style="margin-top:8px"></div>
   </div>
 </div>
 
 <!-- ======= OPERAÇÕES ======= -->
 <div id="pg-operacoes" class="pg">
   <div class="stitle">Registro de Operações</div>
-  <div class="g2">
-    <div class="card">
-      <div class="ctitle">✏️ Lançar Operação</div>
-      <div class="frow f2">
-        <div><label>Data Pregão</label><input type="date" id="op-dt" value="2026-04-16"></div>
-        <div><label>Tipo</label><select id="op-tipo"><option value="C">COMPRA</option><option value="V">VENDA</option></select></div>
-      </div>
-      <div class="frow f2">
-        <div><label>Ticker</label><input type="text" id="op-tk" placeholder="COGN3" oninput="this.value=this.value.toUpperCase()"></div>
-        <div><label>Quantidade</label><input type="number" id="op-qtd" placeholder="180000"></div>
-      </div>
-      <div class="frow f2">
-        <div><label>Preço Unit. (R$)</label><input type="number" step="0.001" id="op-px" placeholder="3.310"></div>
-        <div><label>Nr. Nota</label><input type="text" id="op-nota" placeholder="31190661"></div>
-      </div>
-      <div class="frow" style="margin-bottom:12px">
-        <div><label>Observação</label><input type="text" id="op-obs" placeholder="Day trade, BTC..."></div>
-      </div>
-      <div style="display:flex;gap:8px">
-        <button class="btn btn-gold" onclick="addOp()">➕ Registrar</button>
-        <button class="btn btn-out btn-sm" onclick="limparOp()">Limpar</button>
-      </div>
-      <div id="op-msg" style="margin-top:10px"></div>
+  <div class="card">
+    <div class="ctitle">✏️ Lançamento Manual</div>
+    <div class="frow f4">
+      <div><label>Data Pregão</label><input type="date" id="op-dt"></div>
+      <div><label>Tipo</label><select id="op-tipo"><option value="C">COMPRA</option><option value="V">VENDA</option></select></div>
+      <div><label>Ticker</label><input type="text" id="op-tk" placeholder="COGN3" oninput="this.value=this.value.toUpperCase()"></div>
+      <div><label>Quantidade</label><input type="number" id="op-qtd" placeholder="180000"></div>
     </div>
-
-    <div class="card">
-      <div class="ctitle">📋 Colar Nota de Corretagem (auto)</div>
-      <div class="paste">
-        <label>Cole o texto da seção "Negócios realizados" da nota:</label>
-        <textarea id="nota-txt" rows="7" placeholder="1-BOVESPA V VISTA PETR4 PN 16000 47,66 762.560,00 C&#10;1-BOVESPA C VISTA GMAT3 ON 20000 4,06 81.200,00 D"></textarea>
-        <p style="font-size:11px;color:#999;margin-top:5px">💡 O sistema detecta ticker, C/V, qtd e preço automaticamente</p>
-      </div>
-      <div class="frow f2">
-        <div><label>Data Pregão da Nota</label><input type="date" id="nota-dt" value="2026-04-16"></div>
-        <div><label>Nr. Nota</label><input type="text" id="nota-nr" placeholder="31234466"></div>
-      </div>
-      <button class="btn btn-gold" onclick="parsearNota()">🔍 Interpretar e Importar</button>
-      <div id="nota-prev" style="margin-top:10px"></div>
+    <div class="frow f3">
+      <div><label>Preço Unit. (R$)</label><input type="number" step="0.001" id="op-px" placeholder="3.310"></div>
+      <div><label>Nr. Nota</label><input type="text" id="op-nota" placeholder="31190661"></div>
+      <div><label>Observação</label><input type="text" id="op-obs" placeholder="Day trade, BTC..."></div>
     </div>
+    <div style="display:flex;gap:8px">
+      <button class="btn btn-gold" onclick="addOp()">➕ Registrar Operação</button>
+      <button class="btn btn-out btn-sm" onclick="limparOp()">Limpar</button>
+    </div>
+    <div id="op-msg" style="margin-top:8px"></div>
   </div>
 
   <div class="card">
     <div class="ctitle">Histórico de Operações</div>
-    <div style="display:flex;gap:8px;margin-bottom:10px;align-items:center;flex-wrap:wrap">
-      <input type="text" placeholder="🔍 Filtrar por ticker..." style="width:180px" oninput="filtrarOps(this.value)">
+    <div style="display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap">
+      <input type="text" placeholder="🔍 Filtrar ticker..." style="width:160px" oninput="filtrarOps(this.value)">
       <select id="op-mes-fil" onchange="filtrarOps('')" style="width:140px">
         <option value="">Todos os meses</option>
         <option value="2026-04">Abril/2026</option>
@@ -268,12 +263,12 @@ tr:last-child td{border-bottom:none}
         <option value="2026-02">Fevereiro/2026</option>
         <option value="2026-01">Janeiro/2026</option>
       </select>
-      <button class="btn btn-dark btn-sm" onclick="exportCSV()">📥 Exportar CSV</button>
+      <button class="btn btn-navy btn-sm" onclick="exportCSV()">📥 Exportar CSV</button>
     </div>
     <div class="twrap">
       <table>
-        <thead><tr><th>Data</th><th>C/V</th><th>Ticker</th><th>Qtd</th><th>Preço Unit.</th><th>Valor Total</th><th>PM Antes</th><th>PM Novo</th><th>Resultado</th><th>Nota</th><th>Obs</th><th></th></tr></thead>
-        <tbody id="tb-ops"></tbody>
+        <thead><tr><th>Data</th><th>C/V</th><th>Ticker</th><th>Qtd</th><th>Preço</th><th>Volume</th><th>PM Antes</th><th>PM Novo</th><th>Resultado</th><th>Nota</th><th>Obs</th><th></th></tr></thead>
+        <tbody id="tb-ops"><tr><td colspan="12" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
       </table>
     </div>
   </div>
@@ -285,24 +280,21 @@ tr:last-child td{border-bottom:none}
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn btn-gold btn-sm" onclick="openModal('m-precos')">📈 Atualizar Preços</button>
-        <button class="btn btn-out btn-sm" onclick="openModal('m-divjcp')">💰 Lançar Div/JCP</button>
-        <button class="btn btn-dark btn-sm" onclick="openModal('m-acao')">➕ Nova Ação</button>
+        <button class="btn btn-navy btn-sm" onclick="openModal('m-acao')">➕ Nova Ação</button>
+        <button class="btn btn-out btn-sm" onclick="openModal('m-divjcp')">💰 Div/JCP</button>
       </div>
-      <input type="text" placeholder="🔍 Filtrar ação..." style="width:180px" oninput="filtrarCart(this.value)">
+      <input type="text" placeholder="🔍 Filtrar..." style="width:180px" oninput="filtrarCart(this.value)">
     </div>
     <div class="twrap">
-      <table id="tb-cart">
-        <thead>
-          <tr>
-            <th>Mercado</th><th>Ação</th><th>Qtd</th>
-            <th>PM Aq.</th><th>PM Real</th><th>Fin.Aq.</th>
-            <th>Preço Atual</th><th>Fin.Bruto</th><th>%Cart</th>
-            <th>Ganho Bruto</th><th>Rent.%</th><th>Div.&JCP</th>
-            <th>Liquidez</th><th>Segmento</th>
-          </tr>
-        </thead>
-        <tbody id="tb-cart-body"></tbody>
+      <table>
+        <thead><tr>
+          <th>Mercado</th><th>Ação</th><th>Qtd</th>
+          <th>PM Aq.</th><th>PM Real</th><th>Fin.Aq.</th>
+          <th>Preço Atual</th><th>Fin.Bruto</th><th>%Cart</th>
+          <th>Ganho Bruto</th><th>Rent.%</th><th>Div.&JCP</th>
+          <th>Liquidez</th><th>Segmento</th><th>Ações</th>
+        </tr></thead>
+        <tbody id="tb-cart-body"><tr><td colspan="15" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
         <tfoot id="tb-cart-foot"></tfoot>
       </table>
     </div>
@@ -326,30 +318,27 @@ tr:last-child td{border-bottom:none}
       <div><label>Tipo</label><select id="ir-tipo"><option value="swing">Swing Trade (15%)</option><option value="day">Day Trade (20%)</option></select></div>
     </div>
     <button class="btn btn-gold" onclick="addIR()">➕ Adicionar Venda</button>
+    <div id="ir-msg" style="margin-top:8px"></div>
   </div>
-
   <div class="card">
-    <div class="ctitle">Vendas do Mês — <span id="ir-mes-label">Abril/2026</span></div>
+    <div class="ctitle">Vendas do Mês</div>
     <div class="twrap">
       <table>
         <thead><tr><th>Data</th><th>Ação</th><th>Qtd</th><th>PM</th><th>Val.Médio</th><th>Preço Venda</th><th>Val.Venda</th><th>Resultado</th><th></th></tr></thead>
-        <tbody id="tb-ir-mes"></tbody>
+        <tbody id="tb-ir-mes"><tr><td colspan="9" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
       </table>
     </div>
     <div id="ir-res" style="margin-top:10px;background:#f8f8f8;padding:12px;border-radius:6px;font-size:13px"></div>
   </div>
-
   <div class="card">
-    <div class="ctitle">IR Acumulado por Competência (Jul/2021 → Atual)</div>
+    <div class="ctitle">IR Acumulado por Competência</div>
     <div class="twrap">
       <table>
-        <thead><tr><th>Competência</th><th>Resultado</th><th>IR Projetado</th><th>Status</th></tr></thead>
-        <tbody id="tb-ir-hist"></tbody>
+        <thead><tr><th>Competência</th><th>Resultado</th><th>IR Projetado</th><th>Status</th><th></th></tr></thead>
+        <tbody id="tb-ir-hist"><tr><td colspan="5" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
       </table>
     </div>
-    <div class="alert a-warn" style="margin-top:10px">
-      Saldo de prejuízo acumulado para abatimento: <strong id="ir-acum-label">-R$ 2.768.308,04</strong>
-    </div>
+    <div class="alert a-warn" style="margin-top:10px">Saldo de prejuízo acumulado para abatimento: <strong id="ir-acum-label">calculando...</strong></div>
   </div>
 </div>
 
@@ -357,15 +346,6 @@ tr:last-child td{border-bottom:none}
 <div id="pg-dividendos" class="pg">
   <div class="stitle">Dividendos & JCP</div>
   <div class="g2">
-    <div class="card">
-      <div class="ctitle">📋 Detectar do Extrato BTG</div>
-      <div class="paste">
-        <label>Cole o texto do extrato de conta corrente:</label>
-        <textarea id="ext-txt" rows="7" placeholder="17/03/2026 DIVIDENDOS - À VISTA s/ LAVVI ON NM - LAVV3 9.225,60 14.252,86&#10;01/04/2026 JUROS S/ CAPITAL - À VISTA s/ ITAUSA PN N1 400,01 2.351,33"></textarea>
-      </div>
-      <button class="btn btn-gold" onclick="parsearExtrato()">🔍 Detectar Dividendos</button>
-      <div id="ext-prev" style="margin-top:10px"></div>
-    </div>
     <div class="card">
       <div class="ctitle">✏️ Lançamento Manual</div>
       <div class="frow f2">
@@ -378,16 +358,20 @@ tr:last-child td{border-bottom:none}
       </div>
       <button class="btn btn-gold" onclick="addDiv()">➕ Lançar</button>
     </div>
+    <div class="card">
+      <div class="ctitle">Totais por Ação</div>
+      <div id="div-totais" style="font-size:12px;color:#666">Carregando...</div>
+    </div>
   </div>
   <div class="card">
     <div class="ctitle">Histórico de Proventos</div>
     <div class="twrap">
       <table>
         <thead><tr><th>Data</th><th>Ação</th><th>Tipo</th><th>Valor</th><th></th></tr></thead>
-        <tbody id="tb-div"></tbody>
+        <tbody id="tb-div"><tr><td colspan="5" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
       </table>
     </div>
-    <div style="margin-top:10px;font-size:13px">Total recebido: <strong id="div-total" class="pos"></strong></div>
+    <div style="margin-top:10px;font-size:13px">Total recebido: <strong id="div-total" class="pos">—</strong></div>
   </div>
 </div>
 
@@ -396,22 +380,21 @@ tr:last-child td{border-bottom:none}
   <div class="stitle">Liquidez & Valores Futuros</div>
   <div class="g2">
     <div class="card">
-      <div class="ctitle">Posição de Caixa Atual</div>
-      <table>
-        <tr><td>Saldo Conta Investimento</td><td style="text-align:right" class="pos"><strong>R$ 949,02</strong></td></tr>
-        <tr><td>Saldo Conta Corrente</td><td style="text-align:right">R$ 2.043,10</td></tr>
-        <tr style="background:#fffde7"><td><strong>🟡 Valores em Trânsito</strong></td><td style="text-align:right;color:var(--gold)"><strong>R$ 1.604.168,51</strong></td></tr>
-        <tr><td>Lançamentos Futuros</td><td style="text-align:right">R$ 1.604.168,51</td></tr>
+      <div class="ctitle">Posição de Caixa</div>
+      <table id="tb-caixa">
+        <tr><td>Saldo Conta Investimento</td><td style="text-align:right" class="pos" id="cx-inv">—</td></tr>
+        <tr><td>Saldo Conta Corrente</td><td style="text-align:right" id="cx-cc">—</td></tr>
+        <tr style="background:#fffde7"><td><strong>🟡 Valores em Trânsito</strong></td><td style="text-align:right;color:var(--gold)" id="cx-trans"><strong>—</strong></td></tr>
       </table>
     </div>
     <div class="card">
       <div class="ctitle">➕ Lançar Valor Futuro</div>
       <div class="frow f2">
-        <div><label>Data Prevista</label><input type="date" id="liq-dt"></div>
+        <div><label>Data</label><input type="date" id="liq-dt"></div>
         <div><label>Tipo</label><select id="liq-tipo"><option>Dividendo a receber</option><option>JCP a receber</option><option>Vencimento CDB</option><option>Liquidação D+2</option><option>Outros</option></select></div>
       </div>
       <div class="frow f2">
-        <div><label>Ativo / Descrição</label><input type="text" id="liq-ativo" placeholder="B3SA3"></div>
+        <div><label>Ativo</label><input type="text" id="liq-ativo" placeholder="B3SA3"></div>
         <div><label>Valor (R$)</label><input type="number" step="0.01" id="liq-val" placeholder="253363.73"></div>
       </div>
       <button class="btn btn-gold" onclick="addLiq()">➕ Adicionar</button>
@@ -422,10 +405,10 @@ tr:last-child td{border-bottom:none}
     <div class="twrap">
       <table>
         <thead><tr><th>Data</th><th>Tipo</th><th>Ativo</th><th>Valor</th><th>Status</th><th></th></tr></thead>
-        <tbody id="tb-liq"></tbody>
+        <tbody id="tb-liq"><tr><td colspan="6" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
       </table>
     </div>
-    <div style="margin-top:10px;font-size:13px">Total previsto: <strong id="liq-total" class="pos"></strong></div>
+    <div style="margin-top:10px;font-size:13px">Total previsto: <strong id="liq-total" class="pos">—</strong></div>
   </div>
 </div>
 
@@ -433,13 +416,11 @@ tr:last-child td{border-bottom:none}
 <div id="pg-rendafixa" class="pg">
   <div class="stitle">Renda Fixa</div>
   <div class="card">
-    <div style="display:flex;gap:8px;margin-bottom:12px">
-      <button class="btn btn-gold btn-sm" onclick="openModal('m-rf')">➕ Adicionar Produto</button>
-    </div>
+    <button class="btn btn-navy btn-sm" style="margin-bottom:12px" onclick="openModal('m-rf')">➕ Adicionar Produto</button>
     <div class="twrap">
       <table>
-        <thead><tr><th>Produto</th><th>Emissor</th><th>Vencimento</th><th>Taxa</th><th>Qtd</th><th>Preço</th><th>Saldo Líq.</th><th>Saldo Bruto</th></tr></thead>
-        <tbody id="tb-rf"></tbody>
+        <thead><tr><th>Tipo</th><th>Emissor</th><th>Vencimento</th><th>Taxa</th><th>Qtd</th><th>Saldo Líq.</th><th>Saldo Bruto</th><th></th></tr></thead>
+        <tbody id="tb-rf"><tr><td colspan="8" class="loading"><div class="spinner"></div>Carregando...</td></tr></tbody>
         <tfoot id="tb-rf-foot"></tfoot>
       </table>
     </div>
@@ -453,40 +434,33 @@ tr:last-child td{border-bottom:none}
     <div class="card" style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">💼</div>
       <div class="ctitle">Relatório de Posição</div>
-      <p style="font-size:12px;color:#666;margin-bottom:14px">Carteira completa: ações, PM, preços, rentabilidade, dividendos e liquidez.</p>
-      <button class="btn btn-gold" style="width:100%" onclick="gerarRel('posicao')">📄 Gerar PDF</button>
-      <button class="btn btn-out btn-sm" style="width:100%;margin-top:8px" onclick="gerarRel('img')">📸 Imagem (WhatsApp)</button>
+      <p style="font-size:12px;color:#666;margin-bottom:14px">Carteira completa com PM, preços, rentabilidade e dividendos.</p>
+      <button class="btn btn-gold" style="width:100%" onclick="gerarPDF('posicao')">📄 Gerar PDF</button>
+      <button class="btn btn-out btn-sm" style="width:100%;margin-top:8px" onclick="gerarImgWhats()">📸 Imagem WhatsApp</button>
     </div>
     <div class="card" style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">🧾</div>
       <div class="ctitle">Relatório de IR</div>
       <p style="font-size:12px;color:#666;margin-bottom:14px">IR projetado por competência + acumulado desde Jul/2021.</p>
-      <button class="btn btn-gold" style="width:100%" onclick="gerarRel('ir')">📄 Gerar PDF</button>
+      <button class="btn btn-gold" style="width:100%" onclick="gerarPDF('ir')">📄 Gerar PDF</button>
     </div>
     <div class="card" style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">🏦</div>
       <div class="ctitle">Status da Conta</div>
-      <p style="font-size:12px;color:#666;margin-bottom:14px">Patrimônio, saldo, valores futuros e renda fixa consolidados.</p>
-      <button class="btn btn-gold" style="width:100%" onclick="gerarRel('status')">📄 Gerar PDF</button>
+      <p style="font-size:12px;color:#666;margin-bottom:14px">Patrimônio, saldo, valores futuros e renda fixa.</p>
+      <button class="btn btn-gold" style="width:100%" onclick="gerarPDF('status')">📄 Gerar PDF</button>
     </div>
   </div>
   <div class="card">
     <div class="ctitle">📧 Enviar por E-mail</div>
+    <div class="alert a-info">Os relatórios são gerados em PDF e abertos para impressão/download. Para envio automático por e-mail, configure o EmailJS na aba Config.</div>
     <div class="frow f3">
       <div><label>E-mail Destinatário</label><input type="email" id="email-dest" placeholder="antonio@email.com"></div>
-      <div><label>Assunto</label><input type="text" id="email-assunto" value="Relatório de Carteira · AVIN | BTG"></div>
-      <div><label>Relatórios</label><select id="email-rel"><option>Todos (3)</option><option>Apenas Posição</option><option>Apenas IR</option><option>Apenas Status</option></select></div>
+      <div><label>Assunto</label><input type="text" id="email-assunto" value="Relatório de Carteira · AVIN | BTG Pactual"></div>
+      <div><label>Relatório</label><select id="email-rel"><option>Todos (3)</option><option>Posição</option><option>IR</option><option>Status</option></select></div>
     </div>
-    <button class="btn btn-dark" onclick="enviarEmail()">📧 Enviar</button>
+    <button class="btn btn-navy" onclick="enviarEmail()">📧 Enviar</button>
     <div id="email-msg" style="margin-top:8px"></div>
-  </div>
-  <div id="rel-preview" class="card" style="display:none">
-    <div class="ctitle">Preview</div>
-    <div id="rel-content"></div>
-    <div style="margin-top:12px;display:flex;gap:8px">
-      <button class="btn btn-gold" onclick="window.print()">🖨️ Imprimir / Salvar PDF</button>
-      <button class="btn btn-out" onclick="document.getElementById('rel-preview').style.display='none'">✕ Fechar</button>
-    </div>
   </div>
 </div>
 
@@ -495,54 +469,65 @@ tr:last-child td{border-bottom:none}
   <div class="stitle">Configurações</div>
   <div class="g2">
     <div class="card">
-      <div class="ctitle">Dados do Cliente</div>
-      <div class="frow">
-        <div><label>Nome</label><input type="text" id="cfg-nome" value="ANTONIO LUIS RAMOS DE RESENDE JUNIOR"></div>
-        <div><label>Conta</label><input type="text" id="cfg-conta" value="002403079"></div>
-        <div><label>CPF</label><input type="text" id="cfg-cpf" value="201.718.203-63"></div>
-        <div><label>Data Abertura</label><input type="date" id="cfg-abertura" value="2020-03-30"></div>
-        <div><label>E-mail Relatórios</label><input type="email" id="cfg-email" value="avinbtgvinicius@gmail.com"></div>
-      </div>
-      <button class="btn btn-gold" onclick="salvarConfig()">💾 Salvar</button>
-    </div>
-    <div class="card">
       <div class="ctitle">Aliases de Tickers</div>
-      <div class="alert a-info">Tickers do BTG → como aparecem nos relatórios.<br>Ex: AZUL53 → AZUL4</div>
-      <div id="aliases-list" style="margin:10px 0"></div>
-      <div class="frow f3" style="margin-bottom:8px">
+      <div class="alert a-info">Define como os tickers aparecem nos relatórios.<br>Ex: AZUL53 → AZUL4</div>
+      <div id="aliases-list" style="margin:10px 0;line-height:2"></div>
+      <div class="frow f3">
         <div><label>Ticker BTG</label><input type="text" id="al-de" placeholder="AZUL53" oninput="this.value=this.value.toUpperCase()"></div>
         <div><label>Exibir como</label><input type="text" id="al-para" placeholder="AZUL4" oninput="this.value=this.value.toUpperCase()"></div>
-        <div style="display:flex;align-items:flex-end"><button class="btn btn-gold btn-sm" onclick="addAlias()">+ Add</button></div>
+        <div style="display:flex;align-items:flex-end"><button class="btn btn-gold btn-sm" onclick="addAlias()">+ Adicionar</button></div>
       </div>
+    </div>
+    <div class="card">
+      <div class="ctitle">Casos Especiais</div>
+      <div class="alert a-warn">
+        <strong>AZUL4</strong> — PM calculado inversamente pelo valor de mercado<br>
+        <strong>CSAN3</strong> — Entrada via follow-on<br>
+        <strong>Ações vendidas</strong> — Removidas da carteira automaticamente ao lançar venda
+      </div>
+      <div class="alert a-info">Para editar PM manualmente de uma ação, acesse a aba <strong>Carteira</strong> e clique no ícone ✏️ da ação.</div>
     </div>
   </div>
   <div class="card">
-    <div class="ctitle">Google Sheets — Integração</div>
-    <div class="alert a-info">Para sincronizar com Google Sheets, instale o Apps Script (instruções em relatorios@avin.com.br)</div>
-    <div class="frow f2">
-      <div><label>URL da Planilha</label><input type="text" id="cfg-sheet" placeholder="https://docs.google.com/spreadsheets/d/1QOVAGbqob9w7Qle0f553rJTbj9rO7DGipXOGePuNJ2Y"></div>
-      <div><label>Web App URL (Apps Script)</label><input type="text" id="cfg-script" placeholder="https://script.google.com/macros/s/..."></div>
-    </div>
-    <button class="btn btn-dark" onclick="testarSheet()">🔗 Testar Conexão</button>
-    <div id="sheet-msg" style="margin-top:8px"></div>
+    <div class="ctitle">Google Sheets — Banco de Dados</div>
+    <div class="alert a-ok">✅ Conectado: <strong>https://script.google.com/macros/s/AKfycbx95_pgj5mM...</strong></div>
+    <button class="btn btn-navy" onclick="syncAll()">🔄 Sincronizar Agora</button>
+    <button class="btn btn-out btn-sm" style="margin-left:8px" onclick="carregarDados()">📥 Recarregar dados da planilha</button>
+    <div id="sync-msg" style="margin-top:8px"></div>
   </div>
 </div>
 
 <!-- ======= MODAIS ======= -->
-<!-- Modal Preços -->
-<div class="ov" id="m-precos">
+<div class="ov" id="m-acao">
   <div class="modal">
-    <div class="modal-title">📈 Atualizar Preços de Mercado</div>
-    <div class="alert a-info">Cole os preços atuais. Formato: TICKER PREÇO (um por linha)</div>
-    <textarea id="precos-txt" rows="12" placeholder="COGN3 3.31&#10;CYRE3 28.03&#10;BHIA3 2.95&#10;B3SA3 19.61&#10;BBAS3 24.92"></textarea>
+    <div class="modal-title">➕ Adicionar / Editar Ação na Carteira</div>
+    <input type="hidden" id="m-ac-idx" value="-1">
+    <div class="frow f2">
+      <div><label>Ticker</label><input type="text" id="m-ac-tk" oninput="this.value=this.value.toUpperCase()"></div>
+      <div><label>Mercado</label><select id="m-ac-mkt"><option value="RV">Renda Variável</option><option value="FII">FII</option></select></div>
+    </div>
+    <div class="frow f2">
+      <div><label>Quantidade</label><input type="number" id="m-ac-qtd"></div>
+      <div><label>PM Aquisição</label><input type="number" step="0.001" id="m-ac-pm"></div>
+    </div>
+    <div class="frow f2">
+      <div><label>PM Real</label><input type="number" step="0.001" id="m-ac-pmr"></div>
+      <div><label>Preço Atual</label><input type="number" step="0.001" id="m-ac-px"></div>
+    </div>
+    <div class="frow f2">
+      <div><label>Div.&JCP Acumulado</label><input type="number" step="0.01" id="m-ac-div"></div>
+      <div><label>Liquidez</label><select id="m-ac-liq"><option>D+2</option><option>D+1</option><option>D+0</option><option>D+3</option><option>D+4</option><option>D+5</option><option>D+6</option><option>D+7</option></select></div>
+    </div>
+    <div class="frow">
+      <div><label>Segmento</label><input type="text" id="m-ac-seg" placeholder="Bancos, Construção Civil..."></div>
+    </div>
     <div class="modal-foot">
-      <button class="btn btn-out" onclick="closeModal('m-precos')">Cancelar</button>
-      <button class="btn btn-gold" onclick="aplicarPrecos()">✅ Aplicar</button>
+      <button class="btn btn-out" onclick="closeModal('m-acao')">Cancelar</button>
+      <button class="btn btn-gold" onclick="salvarAcaoCarteira()">✅ Salvar</button>
     </div>
   </div>
 </div>
 
-<!-- Modal Div/JCP -->
 <div class="ov" id="m-divjcp">
   <div class="modal">
     <div class="modal-title">💰 Lançar Dividendo / JCP na Carteira</div>
@@ -561,34 +546,6 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
-<!-- Modal Nova Ação -->
-<div class="ov" id="m-acao">
-  <div class="modal">
-    <div class="modal-title">➕ Adicionar Ação à Carteira</div>
-    <div class="frow f2">
-      <div><label>Ticker</label><input type="text" id="m-ac-tk" oninput="this.value=this.value.toUpperCase()"></div>
-      <div><label>Mercado</label><select id="m-ac-mkt"><option>Renda Variável</option><option>FII</option></select></div>
-    </div>
-    <div class="frow f2">
-      <div><label>Quantidade</label><input type="number" id="m-ac-qtd"></div>
-      <div><label>PM Aquisição</label><input type="number" step="0.001" id="m-ac-pm"></div>
-    </div>
-    <div class="frow f2">
-      <div><label>PM Real</label><input type="number" step="0.001" id="m-ac-pmr"></div>
-      <div><label>Preço Atual</label><input type="number" step="0.001" id="m-ac-px"></div>
-    </div>
-    <div class="frow f2">
-      <div><label>Liquidez</label><select id="m-ac-liq"><option>D+2</option><option>D+1</option><option>D+0</option><option>D+3</option></select></div>
-      <div><label>Segmento</label><input type="text" id="m-ac-seg" placeholder="Bancos"></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn btn-out" onclick="closeModal('m-acao')">Cancelar</button>
-      <button class="btn btn-gold" onclick="addAcaoCarteira()">✅ Adicionar</button>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Renda Fixa -->
 <div class="ov" id="m-rf">
   <div class="modal">
     <div class="modal-title">➕ Adicionar Produto de Renda Fixa</div>
@@ -598,11 +555,11 @@ tr:last-child td{border-bottom:none}
     </div>
     <div class="frow f2">
       <div><label>Vencimento</label><input type="date" id="m-rf-venc"></div>
-      <div><label>Taxa</label><input type="text" id="m-rf-taxa" placeholder="CDI, IPCA+6%, etc."></div>
+      <div><label>Taxa</label><input type="text" id="m-rf-taxa" placeholder="CDI, IPCA+6%..."></div>
     </div>
     <div class="frow f3">
       <div><label>Quantidade</label><input type="number" id="m-rf-qtd"></div>
-      <div><label>Saldo Líq. (R$)</label><input type="number" step="0.01" id="m-rf-liq"></div>
+      <div><label>Saldo Líquido (R$)</label><input type="number" step="0.01" id="m-rf-liq"></div>
       <div><label>Saldo Bruto (R$)</label><input type="number" step="0.01" id="m-rf-bruto"></div>
     </div>
     <div class="modal-foot">
@@ -612,358 +569,561 @@ tr:last-child td{border-bottom:none}
   </div>
 </div>
 
+<!-- PDF WINDOW -->
+<div id="pdf-window"></div>
+
 <script>
 // ============================================================
-// STORAGE
+// CONFIG
 // ============================================================
-const S = {
-  get(k){try{return JSON.parse(localStorage.getItem('avinbtg_'+k)||'null')}catch{return null}},
-  set(k,v){localStorage.setItem('avinbtg_'+k,JSON.stringify(v))},
-};
+const API = 'https://script.google.com/macros/s/AKfycbx95_pgj5mM-RI33cybxyZCUrSQltC5hj8EaAEvsZ0By3BF2HkJdJx2lmMrZIV7ml2Frg/exec';
 
 // ============================================================
-// ESTADO INICIAL
+// STATE
 // ============================================================
-let aliases = S.get('aliases') || {
-  'AZUL53':'AZUL4','AZUL11':'AZUL4','AZUL13':'AZUL4','AZUL15':'AZUL4',
-  'GOLL54':'GOLL4','GOLL53':'GOLL4','TASA3':'TASA4','CSAN3F':'CSAN3',
-  'GFSA3F':'GFSA3','COGN3F':'COGN3','SOJA3F':'SOJA3','ITSA4F':'ITSA4',
-  'CYRE4F':'CYRE4','HBOR3F':'HBOR3'
-};
-
-let carteira = S.get('carteira') || [
-  {tk:'AERI3',mkt:'RV',qtd:110000,pmAq:16.153,pmReal:22.76,px:2.56,div:27.41,liq:'D+2',seg:'Máq. e Equip. Industriais'},
-  {tk:'ARND3',mkt:'RV',qtd:87200,pmAq:2.293,pmReal:2.29,px:0.71,div:0,liq:'D+2',seg:'Programas e Serviços'},
-  {tk:'AUAU3',mkt:'RV',qtd:120000,pmAq:4.310,pmReal:4.42,px:3.76,div:0,liq:'D+2',seg:'Produtos Diversos'},
-  {tk:'AURE3',mkt:'RV',qtd:63000,pmAq:10.770,pmReal:10.01,px:14.00,div:82695.08,liq:'D+2',seg:'Segmento de Atuação'},
-  {tk:'AZUL4',mkt:'RV',qtd:2000,pmAq:325.190,pmReal:379.37,px:10.03,div:5,liq:'D+2',seg:'Transporte Aéreo',alias:true},
-  {tk:'B3SA3',mkt:'RV',qtd:85800,pmAq:12.110,pmReal:17.79,px:19.61,div:124799.70,liq:'D+2',seg:'Serv. Financeiros'},
-  {tk:'BBAS3',mkt:'RV',qtd:95000,pmAq:23.400,pmReal:23.07,px:24.92,div:31169.07,liq:'D+2',seg:'Bancos'},
-  {tk:'BBDC3',mkt:'RV',qtd:70000,pmAq:13.480,pmReal:11.77,px:17.94,div:61254.20,liq:'D+2',seg:'Bancos'},
-  {tk:'BEEF3',mkt:'RV',qtd:146000,pmAq:5.840,pmReal:5.15,px:4.20,div:23530.92,liq:'D+2',seg:'Carnes e Derivados'},
-  {tk:'BHIA3',mkt:'RV',qtd:50000,pmAq:2.738,pmReal:2.74,px:2.95,div:0,liq:'D+2',seg:'Varejo'},
-  {tk:'COGN3',mkt:'RV',qtd:1000000,pmAq:2.201,pmReal:3.22,px:3.31,div:515447.63,liq:'D+2',seg:'Serv. Educacionais'},
-  {tk:'CPLE3',mkt:'RV',qtd:40000,pmAq:9.952,pmReal:9.69,px:16.80,div:45256.78,liq:'D+2',seg:'Energia Elétrica'},
-  {tk:'CSAN3',mkt:'RV',qtd:210000,pmAq:6.400,pmReal:6.63,px:5.50,div:0,liq:'D+2',seg:'Açúcar e Álcool'},
-  {tk:'CYRE3',mkt:'RV',qtd:50000,pmAq:18.882,pmReal:10.99,px:28.03,div:286797.95,liq:'D+2',seg:'Construção Civil'},
-  {tk:'CYRE4',mkt:'RV',qtd:20000,pmAq:38.231,pmReal:38.23,px:25.17,div:286797.95,liq:'D+2',seg:'Construção Civil'},
-  {tk:'ECOR3',mkt:'RV',qtd:135000,pmAq:4.868,pmReal:7.17,px:10.28,div:80023.09,liq:'D+2',seg:'Exploração de Rodovias'},
-  {tk:'FESA4',mkt:'RV',qtd:100000,pmAq:8.190,pmReal:8.19,px:8.37,div:93332.82,liq:'D+2',seg:'Siderurgia'},
-  {tk:'GFSA3',mkt:'RV',qtd:200000,pmAq:8.379,pmReal:9.35,px:1.50,div:6183.20,liq:'D+2',seg:'Construção Civil'},
-  {tk:'GMAT3',mkt:'RV',qtd:215000,pmAq:5.190,pmReal:6.20,px:4.80,div:62451.07,liq:'D+2',seg:'Alimentos'},
-  {tk:'HAPV3',mkt:'RV',qtd:80000,pmAq:25.222,pmReal:26.62,px:12.75,div:0,liq:'D+2',seg:'Serv. Méd. Hosp.'},
-  {tk:'HBOR3',mkt:'RV',qtd:300000,pmAq:2.681,pmReal:6.16,px:2.48,div:58392.94,liq:'D+2',seg:'Construção Civil'},
-  {tk:'ITSA4',mkt:'RV',qtd:20000,pmAq:12.165,pmReal:12.17,px:14.85,div:17140.76,liq:'D+2',seg:'Bancos'},
-  {tk:'JHSF3',mkt:'RV',qtd:10000,pmAq:4.198,pmReal:-34.33,px:13.17,div:132029.41,liq:'D+2',seg:'Construção Civil'},
-  {tk:'KLBN4',mkt:'RV',qtd:262600,pmAq:3.740,pmReal:3.74,px:3.89,div:112183.90,liq:'D+2',seg:'Papel e Celulose'},
-  {tk:'LAVV3',mkt:'RV',qtd:61500,pmAq:5.650,pmReal:5.92,px:15.38,div:255735.43,liq:'D+2',seg:'Construção Civil'},
-  {tk:'LJQQ3',mkt:'RV',qtd:355000,pmAq:3.618,pmReal:5.65,px:2.24,div:60892.48,liq:'D+2',seg:'Produtos Diversos'},
-  {tk:'MEAL3',mkt:'RV',qtd:270000,pmAq:1.620,pmReal:1.75,px:1.00,div:2,liq:'D+2',seg:'Restaurante e Similares'},
-  {tk:'MLAS3',mkt:'RV',qtd:385000,pmAq:1.820,pmReal:1.82,px:1.42,div:19430.81,liq:'D+2',seg:'Computadores e Equip.'},
-  {tk:'MRVE3',mkt:'RV',qtd:140000,pmAq:7.078,pmReal:9.35,px:7.87,div:5138.99,liq:'D+2',seg:'Construção Civil'},
-  {tk:'PCAR3',mkt:'RV',qtd:150000,pmAq:3.497,pmReal:5.37,px:2.48,div:513.45,liq:'D+2',seg:'Alimentos'},
-  {tk:'QUAL3',mkt:'RV',qtd:150000,pmAq:1.888,pmReal:1.88,px:2.19,div:829.08,liq:'D+2',seg:'Serv. Méd.-Hosp.'},
-  {tk:'RAPT4',mkt:'RV',qtd:219000,pmAq:8.100,pmReal:11.10,px:5.65,div:84738.34,liq:'D+2',seg:'Material Rodoviário'},
-  {tk:'RECV3',mkt:'RV',qtd:50000,pmAq:16.690,pmReal:16.69,px:13.60,div:120174.67,liq:'D+2',seg:'Exploração. Refino e Dist.'},
-  {tk:'RVEE3',mkt:'RV',qtd:25910,pmAq:6.840,pmReal:6.84,px:0.97,div:3,liq:'D+2',seg:'-'},
-  {tk:'SHOW3',mkt:'RV',qtd:42000,pmAq:11.660,pmReal:11.66,px:5.56,div:0,liq:'D+3',seg:'Produção de Eventos'},
-  {tk:'SIMH3',mkt:'RV',qtd:40500,pmAq:13.751,pmReal:13.06,px:11.44,div:5693.49,liq:'D+4',seg:'Holdings Diversificadas'},
-  {tk:'SLCE3',mkt:'RV',qtd:11250,pmAq:15.790,pmReal:14.86,px:19.26,div:29615.16,liq:'D+5',seg:'Agricultura'},
-  {tk:'SMTO3',mkt:'RV',qtd:20000,pmAq:15.150,pmReal:15.09,px:18.35,div:31833.12,liq:'D+6',seg:'Açúcar e Álcool'},
-  {tk:'SOJA3',mkt:'RV',qtd:115000,pmAq:8.970,pmReal:8.46,px:7.47,div:54420.06,liq:'D+7',seg:'Agricultura'},
-  {tk:'SPYI11',mkt:'RV',qtd:3000,pmAq:107.098,pmReal:107.10,px:102.74,div:5956.08,liq:'D+7',seg:'-'},
-  {tk:'TASA4',mkt:'RV',qtd:160000,pmAq:5.834,pmReal:5.83,px:5.17,div:9926.83,liq:'D+2',seg:'Armas e Munições'},
-  {tk:'USIM5',mkt:'RV',qtd:150000,pmAq:5.968,pmReal:5.95,px:7.04,div:0,liq:'D+2',seg:'Siderurgia'},
-  {tk:'WEST3',mkt:'RV',qtd:45000,pmAq:11.940,pmReal:31.25,px:7.75,div:0,liq:'D+2',seg:'Produtos Diversos'},
-];
-
-let operacoes = S.get('operacoes') || [];
-let irMes = S.get('irmes') || [
-  {dt:'07/04/26',acao:'JHSF3',qtd:53000,pm:4.198,pv:11.33,tipo:'swing'},
-  {dt:'09/04/26',acao:'COGN3',qtd:180000,pm:2.201,pv:3.308,tipo:'swing'},
-  {dt:'10/04/26',acao:'BRAV3',qtd:42000,pm:15.300,pv:21.50,tipo:'swing'},
-];
-let irHist = S.get('irhist') || [
-  {comp:'MARÇO 2026',res:281329.60,status:'Apurado'},
-  {comp:'FEVEREIRO 2026',res:-1080974.07,status:'Apurado'},
-  {comp:'JANEIRO 2026',res:-2360498.00,status:'Apurado'},
-  {comp:'DEZEMBRO 2025',res:-5820.00,status:'Apurado'},
-  {comp:'NOVEMBRO 2025',res:-861032.00,status:'Apurado'},
-  {comp:'OUTUBRO 2025',res:-221080.33,status:'Apurado'},
-  {comp:'SETEMBRO 2025',res:569281.20,status:'Apurado'},
-  {comp:'AGOSTO 2025',res:24748.00,status:'Apurado'},
-  {comp:'JULHO 2025',res:221766.00,status:'Apurado'},
-  {comp:'JUNHO 2025',res:535028.00,status:'Apurado'},
-  {comp:'MAIO 2025',res:923380.00,status:'Apurado'},
-  {comp:'ABRIL 2025',res:104713.33,status:'Apurado'},
-  {comp:'MARÇO 2025',res:-80881.00,status:'Apurado'},
-  {comp:'FEVEREIRO 2025',res:76837.73,status:'Apurado'},
-  {comp:'JANEIRO 2025',res:-451626.67,status:'Apurado'},
-  {comp:'DEZEMBRO 2024',res:13526.53,status:'Apurado'},
-  {comp:'NOVEMBRO 2024',res:-757424.27,status:'Apurado'},
-];
-let dividendos = S.get('dividendos') || [
-  {dt:'13/04/26',acao:'B3SA3',tipo:'JCP',val:10694.33},
-  {dt:'09/04/26',acao:'JHSF3',tipo:'DIVIDENDO',val:10510.78},
-  {dt:'09/04/26',acao:'SPYI11',tipo:'RENDIMENTO',val:2678.01},
-  {dt:'01/04/26',acao:'ITSA4',tipo:'JCP',val:400.01},
-  {dt:'01/04/26',acao:'BBDC3',tipo:'JCP/Aluguel',val:996.18},
-  {dt:'20/03/26',acao:'PETR4',tipo:'DIVIDENDO/Aluguel',val:7301.88},
-  {dt:'17/03/26',acao:'LAVV3',tipo:'DIVIDENDO',val:9440.50},
-];
-let liquidez = S.get('liquidez') || [
-  {dt:'16/04/26',tipo:'Liquidação D+2',ativo:'B3SA3 venda',val:253363.73,status:'Confirmado'},
-  {dt:'20/04/26',tipo:'Saldo estimado',ativo:'—',val:1248382.86,status:'Previsto'},
-  {dt:'30/04/26',tipo:'Saldo estimado',ativo:'—',val:1275937.82,status:'Previsto'},
-];
-let rendaFixa = S.get('rendafixa') || [
-  {tipo:'CDB',emissor:'Banco Fibra S.A.',venc:'23/08/2026',taxa:'IPCA + 6,00%',qtd:140,preco:1693.6814,liq:222548.09,bruto:237115.40},
-  {tipo:'CDB',emissor:'Banco BTG Pactual S.A.',venc:'27/03/2028',taxa:'CDI',qtd:3653743,preco:0.0101,liq:36708.63,bruto:36835.94},
-  {tipo:'CDB',emissor:'Banco BTG Pactual S.A.',venc:'10/04/2028',taxa:'CDI',qtd:19662958,preco:0.0100,liq:196728.92,bruto:197163.62},
-  {tipo:'CDB',emissor:'Ouribank S.A. Banco Múltiplo',venc:'18/09/2028',taxa:'IPCA + 8,25%',qtd:150,preco:1077.1444,liq:159257.33,bruto:161571.66},
-  {tipo:'CDCA',emissor:'BTG Pactual Commodities Ser.',venc:'16/07/2029',taxa:'11,69% a.a.',qtd:379,preco:1027.5738,liq:389450.48,bruto:389450.48},
-  {tipo:'CRI',emissor:'Banco BTG Pactual S.A.',venc:'15/01/2027',taxa:'102,00% do CDI',qtd:67,preco:1036.7248,liq:69460.56,bruto:69460.56},
-  {tipo:'CRA',emissor:'BTG Commodities',venc:'15/12/2033',taxa:'IPCA + 6,01%',qtd:500,preco:1141.0527,liq:570526.33,bruto:570526.33},
-  {tipo:'CRA',emissor:'BTG Commodities',venc:'15/12/2033',taxa:'105,00% do CDI',qtd:500,preco:1048.4267,liq:524213.35,bruto:524213.35},
-  {tipo:'Compromissada',emissor:'Banco BTG Pactual S.A.',venc:'-',taxa:'70,00% do CDI (CRI)',qtd:1,preco:795039.90,liq:795039.90,bruto:795039.90},
-];
-
-// Save helpers
-const save = () => {
-  S.set('aliases',aliases);
-  S.set('carteira',carteira);
-  S.set('operacoes',operacoes);
-  S.set('irmes',irMes);
-  S.set('irhist',irHist);
-  S.set('dividendos',dividendos);
-  S.set('liquidez',liquidez);
-  S.set('rendafixa',rendaFixa);
+let DB = {
+  carteira: [], operacoes: [], ir: [], irhist: [],
+  dividendos: [], liquidez: [], rendafixa: [], aliases: {},
+  config: { patrimonio:36685711.07, saldoInv:949.02, transito:1604168.51, cc:2043.10 }
 };
 
 // ============================================================
 // UTILS
 // ============================================================
-const fmt = (v,dec=2) => v==null?'—':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec});
-const fmtN = (v,dec=3) => v==null?'—':Number(v).toLocaleString('pt-BR',{minimumFractionDigits:dec,maximumFractionDigits:dec});
-const fmtP = v => (v>=0?'+':'')+v.toFixed(2)+'%';
-const aliasOf = tk => aliases[tk] || tk;
-const pmCarteira = tk => {
-  const a = tk.toUpperCase();
-  const item = carteira.find(c=>c.tk===a||c.tk===aliasOf(a));
-  return item ? item.pmAq : null;
+const fmt = (v,d=2) => v==null||v===''?'—':'R$ '+Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmtN = (v,d=3) => Number(v).toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+const fmtP = v => (v>=0?'+':'')+Number(v).toFixed(2)+'%';
+const aliasOf = tk => DB.aliases[tk] || tk;
+const hoje = () => new Date().toISOString().split('T')[0];
+const showMsg = (id,msg,cls,ms=4000) => {
+  const el=document.getElementById(id);
+  if(!el) return;
+  el.innerHTML=`<div class="alert ${cls}">${msg}</div>`;
+  if(ms>0) setTimeout(()=>el.innerHTML='',ms);
 };
+
+// ============================================================
+// API — Google Sheets
+// ============================================================
+async function apiCall(action, data={}) {
+  try {
+    const url = `${API}?action=${action}`;
+    const res = await fetch(url, {
+      method:'POST',
+      body: JSON.stringify({action, ...data}),
+    });
+    const json = await res.json();
+    if(!json.ok) throw new Error(json.error);
+    return json.data;
+  } catch(e) {
+    console.error('API Error:', e);
+    throw e;
+  }
+}
+
+function setBadge(status) {
+  const b = document.getElementById('sync-badge');
+  if(status==='ok') { b.className='sync-status sync-ok'; b.textContent='✅ Sincronizado'; }
+  else if(status==='err') { b.className='sync-status sync-err'; b.textContent='❌ Sem conexão'; }
+  else { b.className='sync-status sync-load'; b.textContent='⏳ Sincronizando...'; }
+}
+
+// ============================================================
+// CARREGAR DADOS DA PLANILHA
+// ============================================================
+async function carregarDados() {
+  setBadge('load');
+  try {
+    const data = await apiCall('getAll');
+
+    // Carteira
+    if(data.carteira && data.carteira.length > 0) {
+      DB.carteira = data.carteira.map(r => ({
+        tk: r.tk||'', mkt: r.mkt||'RV',
+        qtd: Number(r.qtd)||0, pmAq: Number(r.pmAq)||0,
+        pmReal: Number(r.pmReal)||0, px: Number(r.px)||0,
+        div: Number(r.div)||0, liq: r.liq||'D+2',
+        seg: r.seg||'', alias: r.alias==='true'||r.alias===true
+      }));
+    } else {
+      carregarCarteiraPadrao();
+    }
+
+    // Operações
+    if(data.operacoes) DB.operacoes = data.operacoes.map(r=>({
+      dt:r.dt, tipo:r.tipo, tk:r.tk, qtd:Number(r.qtd)||0,
+      px:Number(r.px)||0, vol:Number(r.vol)||0,
+      pmAntes:Number(r.pmAntes)||0, pmNovo:Number(r.pmNovo)||0,
+      resultado:r.resultado!==''?Number(r.resultado):null,
+      nota:r.nota, obs:r.obs
+    }));
+
+    // IR
+    if(data.ir) DB.ir = data.ir.map(r=>({
+      dt:r.dt, acao:r.acao, qtd:Number(r.qtd)||0,
+      pm:Number(r.pm)||0, pv:Number(r.pv)||0, tipo:r.tipo
+    }));
+
+    // IR Histórico
+    if(data.irhist && data.irhist.length > 0) {
+      DB.irhist = data.irhist.map(r=>({comp:r.comp, res:Number(r.res)||0, status:r.status}));
+    } else {
+      carregarIRHistPadrao();
+    }
+
+    // Dividendos
+    if(data.dividendos) DB.dividendos = data.dividendos.map(r=>({
+      dt:r.dt, acao:r.acao, tipo:r.tipo, val:Number(r.val)||0
+    }));
+
+    // Liquidez
+    if(data.liquidez) DB.liquidez = data.liquidez.map(r=>({
+      dt:r.dt, tipo:r.tipo, ativo:r.ativo, val:Number(r.val)||0, status:r.status||'Previsto'
+    }));
+
+    // Renda Fixa
+    if(data.rendafixa && data.rendafixa.length > 0) {
+      DB.rendafixa = data.rendafixa.map(r=>({
+        tipo:r.tipo, emissor:r.emissor, venc:r.venc,
+        taxa:r.taxa, qtd:Number(r.qtd)||0, preco:Number(r.preco)||0,
+        liq:Number(r.liq)||0, bruto:Number(r.bruto)||0
+      }));
+    } else {
+      carregarRFPadrao();
+    }
+
+    // Aliases
+    if(data.aliases && data.aliases.length > 0) {
+      DB.aliases = {};
+      data.aliases.forEach(r => { if(r.de && r.para) DB.aliases[r.de] = r.para; });
+    } else {
+      DB.aliases = {
+        'AZUL53':'AZUL4','AZUL11':'AZUL4','AZUL13':'AZUL4','AZUL15':'AZUL4',
+        'GOLL54':'GOLL4','GOLL53':'GOLL4','CSAN3F':'CSAN3',
+        'GFSA3F':'GFSA3','COGN3F':'COGN3','SOJA3F':'SOJA3',
+        'ITSA4F':'ITSA4','CYRE4F':'CYRE4','HBOR3F':'HBOR3'
+      };
+    }
+
+    setBadge('ok');
+    renderAll();
+
+    // Salva na planilha se estava vazia
+    if(!data.carteira || data.carteira.length===0) await syncAll();
+
+  } catch(e) {
+    setBadge('err');
+    showMsg('sync-msg','❌ Erro ao conectar com Google Sheets: '+e.message,'a-err',0);
+    // Carrega dados padrão mesmo assim
+    carregarCarteiraPadrao();
+    carregarIRHistPadrao();
+    carregarRFPadrao();
+    DB.aliases = {'AZUL53':'AZUL4','AZUL11':'AZUL4','GOLL54':'GOLL4','CSAN3F':'CSAN3'};
+    renderAll();
+  }
+}
+
+// ============================================================
+// SYNC — salva tudo na planilha
+// ============================================================
+async function syncAll() {
+  setBadge('load');
+  try {
+    const aliasRows = Object.entries(DB.aliases).map(([de,para])=>({de,para}));
+    await apiCall('saveAll', {
+      carteira: DB.carteira,
+      operacoes: DB.operacoes,
+      ir: DB.ir,
+      irhist: DB.irhist,
+      dividendos: DB.dividendos,
+      liquidez: DB.liquidez,
+      rendafixa: DB.rendafixa,
+      aliases: aliasRows,
+    });
+    setBadge('ok');
+    showMsg('sync-msg','✅ Dados salvos na planilha Google Sheets!','a-ok');
+  } catch(e) {
+    setBadge('err');
+    showMsg('sync-msg','❌ Erro ao salvar: '+e.message,'a-err',0);
+  }
+}
+
+// ============================================================
+// DADOS PADRÃO
+// ============================================================
+function carregarCarteiraPadrao() {
+  DB.carteira = [
+    {tk:'AERI3',mkt:'RV',qtd:110000,pmAq:16.153,pmReal:22.76,px:2.56,div:27.41,liq:'D+2',seg:'Máq. e Equip. Industriais'},
+    {tk:'ARND3',mkt:'RV',qtd:87200,pmAq:2.293,pmReal:2.29,px:0.71,div:0,liq:'D+2',seg:'Programas e Serviços'},
+    {tk:'AUAU3',mkt:'RV',qtd:120000,pmAq:4.310,pmReal:4.42,px:3.76,div:0,liq:'D+2',seg:'Produtos Diversos'},
+    {tk:'AURE3',mkt:'RV',qtd:63000,pmAq:10.770,pmReal:10.01,px:14.00,div:82695.08,liq:'D+2',seg:'Segmento de Atuação'},
+    {tk:'AZUL4',mkt:'RV',qtd:2000,pmAq:325.190,pmReal:379.37,px:10.03,div:5,liq:'D+2',seg:'Transporte Aéreo',alias:true},
+    {tk:'B3SA3',mkt:'RV',qtd:85800,pmAq:12.110,pmReal:17.79,px:19.61,div:124799.70,liq:'D+2',seg:'Serv. Financeiros'},
+    {tk:'BBAS3',mkt:'RV',qtd:95000,pmAq:23.400,pmReal:23.07,px:24.92,div:31169.07,liq:'D+2',seg:'Bancos'},
+    {tk:'BBDC3',mkt:'RV',qtd:70000,pmAq:13.480,pmReal:11.77,px:17.94,div:61254.20,liq:'D+2',seg:'Bancos'},
+    {tk:'BEEF3',mkt:'RV',qtd:146000,pmAq:5.840,pmReal:5.15,px:4.20,div:23530.92,liq:'D+2',seg:'Carnes e Derivados'},
+    {tk:'BHIA3',mkt:'RV',qtd:50000,pmAq:2.738,pmReal:2.74,px:2.95,div:0,liq:'D+2',seg:'Varejo'},
+    {tk:'COGN3',mkt:'RV',qtd:1000000,pmAq:2.201,pmReal:3.22,px:3.31,div:515447.63,liq:'D+2',seg:'Serv. Educacionais'},
+    {tk:'CPLE3',mkt:'RV',qtd:40000,pmAq:9.952,pmReal:9.69,px:16.80,div:45256.78,liq:'D+2',seg:'Energia Elétrica'},
+    {tk:'CSAN3',mkt:'RV',qtd:210000,pmAq:6.400,pmReal:6.63,px:5.50,div:0,liq:'D+2',seg:'Açúcar e Álcool'},
+    {tk:'CYRE3',mkt:'RV',qtd:50000,pmAq:18.882,pmReal:10.99,px:28.03,div:286797.95,liq:'D+2',seg:'Construção Civil'},
+    {tk:'CYRE4',mkt:'RV',qtd:20000,pmAq:38.231,pmReal:38.23,px:25.17,div:286797.95,liq:'D+2',seg:'Construção Civil'},
+    {tk:'ECOR3',mkt:'RV',qtd:135000,pmAq:4.868,pmReal:7.17,px:10.28,div:80023.09,liq:'D+2',seg:'Exploração de Rodovias'},
+    {tk:'FESA4',mkt:'RV',qtd:100000,pmAq:8.190,pmReal:8.19,px:8.37,div:93332.82,liq:'D+2',seg:'Siderurgia'},
+    {tk:'GFSA3',mkt:'RV',qtd:200000,pmAq:8.379,pmReal:9.35,px:1.50,div:6183.20,liq:'D+2',seg:'Construção Civil'},
+    {tk:'GMAT3',mkt:'RV',qtd:215000,pmAq:5.190,pmReal:6.20,px:4.80,div:62451.07,liq:'D+2',seg:'Alimentos'},
+    {tk:'HAPV3',mkt:'RV',qtd:80000,pmAq:25.222,pmReal:26.62,px:12.75,div:0,liq:'D+2',seg:'Serv. Méd. Hosp.'},
+    {tk:'HBOR3',mkt:'RV',qtd:300000,pmAq:2.681,pmReal:6.16,px:2.48,div:58392.94,liq:'D+2',seg:'Construção Civil'},
+    {tk:'ITSA4',mkt:'RV',qtd:20000,pmAq:12.165,pmReal:12.17,px:14.85,div:17140.76,liq:'D+2',seg:'Bancos'},
+    {tk:'JHSF3',mkt:'RV',qtd:10000,pmAq:4.198,pmReal:-34.33,px:13.17,div:132029.41,liq:'D+2',seg:'Construção Civil'},
+    {tk:'KLBN4',mkt:'RV',qtd:262600,pmAq:3.740,pmReal:3.74,px:3.89,div:112183.90,liq:'D+2',seg:'Papel e Celulose'},
+    {tk:'LAVV3',mkt:'RV',qtd:61500,pmAq:5.650,pmReal:5.92,px:15.38,div:255735.43,liq:'D+2',seg:'Construção Civil'},
+    {tk:'LJQQ3',mkt:'RV',qtd:355000,pmAq:3.618,pmReal:5.65,px:2.24,div:60892.48,liq:'D+2',seg:'Produtos Diversos'},
+    {tk:'MEAL3',mkt:'RV',qtd:270000,pmAq:1.620,pmReal:1.75,px:1.00,div:2,liq:'D+2',seg:'Restaurante e Similares'},
+    {tk:'MLAS3',mkt:'RV',qtd:385000,pmAq:1.820,pmReal:1.82,px:1.42,div:19430.81,liq:'D+2',seg:'Computadores e Equip.'},
+    {tk:'MRVE3',mkt:'RV',qtd:140000,pmAq:7.078,pmReal:9.35,px:7.87,div:5138.99,liq:'D+2',seg:'Construção Civil'},
+    {tk:'PCAR3',mkt:'RV',qtd:150000,pmAq:3.497,pmReal:5.37,px:2.48,div:513.45,liq:'D+2',seg:'Alimentos'},
+    {tk:'QUAL3',mkt:'RV',qtd:150000,pmAq:1.888,pmReal:1.88,px:2.19,div:829.08,liq:'D+2',seg:'Serv. Méd.-Hosp.'},
+    {tk:'RAPT4',mkt:'RV',qtd:219000,pmAq:8.100,pmReal:11.10,px:5.65,div:84738.34,liq:'D+2',seg:'Material Rodoviário'},
+    {tk:'RECV3',mkt:'RV',qtd:50000,pmAq:16.690,pmReal:16.69,px:13.60,div:120174.67,liq:'D+2',seg:'Exploração. Refino e Dist.'},
+    {tk:'RVEE3',mkt:'RV',qtd:25910,pmAq:6.840,pmReal:6.84,px:0.97,div:3,liq:'D+2',seg:'-'},
+    {tk:'SHOW3',mkt:'RV',qtd:42000,pmAq:11.660,pmReal:11.66,px:5.56,div:0,liq:'D+3',seg:'Produção de Eventos'},
+    {tk:'SIMH3',mkt:'RV',qtd:40500,pmAq:13.751,pmReal:13.06,px:11.44,div:5693.49,liq:'D+4',seg:'Holdings Diversificadas'},
+    {tk:'SLCE3',mkt:'RV',qtd:11250,pmAq:15.790,pmReal:14.86,px:19.26,div:29615.16,liq:'D+5',seg:'Agricultura'},
+    {tk:'SMTO3',mkt:'RV',qtd:20000,pmAq:15.150,pmReal:15.09,px:18.35,div:31833.12,liq:'D+6',seg:'Açúcar e Álcool'},
+    {tk:'SOJA3',mkt:'RV',qtd:115000,pmAq:8.970,pmReal:8.46,px:7.47,div:54420.06,liq:'D+7',seg:'Agricultura'},
+    {tk:'SPYI11',mkt:'RV',qtd:3000,pmAq:107.098,pmReal:107.10,px:102.74,div:5956.08,liq:'D+7',seg:'-'},
+    {tk:'TASA4',mkt:'RV',qtd:160000,pmAq:5.834,pmReal:5.83,px:5.17,div:9926.83,liq:'D+2',seg:'Armas e Munições'},
+    {tk:'USIM5',mkt:'RV',qtd:150000,pmAq:5.968,pmReal:5.95,px:7.04,div:0,liq:'D+2',seg:'Siderurgia'},
+    {tk:'WEST3',mkt:'RV',qtd:45000,pmAq:11.940,pmReal:31.25,px:7.75,div:0,liq:'D+2',seg:'Produtos Diversos'},
+  ];
+}
+
+function carregarIRHistPadrao() {
+  DB.irhist = [
+    {comp:'MARÇO 2026',res:281329.60,status:'Apurado'},
+    {comp:'FEVEREIRO 2026',res:-1080974.07,status:'Apurado'},
+    {comp:'JANEIRO 2026',res:-2360498.00,status:'Apurado'},
+    {comp:'DEZEMBRO 2025',res:-5820.00,status:'Apurado'},
+    {comp:'NOVEMBRO 2025',res:-861032.00,status:'Apurado'},
+    {comp:'OUTUBRO 2025',res:-221080.33,status:'Apurado'},
+    {comp:'SETEMBRO 2025',res:569281.20,status:'Apurado'},
+    {comp:'AGOSTO 2025',res:24748.00,status:'Apurado'},
+    {comp:'JULHO 2025',res:221766.00,status:'Apurado'},
+    {comp:'JUNHO 2025',res:535028.00,status:'Apurado'},
+    {comp:'MAIO 2025',res:923380.00,status:'Apurado'},
+    {comp:'ABRIL 2025',res:104713.33,status:'Apurado'},
+    {comp:'MARÇO 2025',res:-80881.00,status:'Apurado'},
+    {comp:'FEVEREIRO 2025',res:76837.73,status:'Apurado'},
+    {comp:'JANEIRO 2025',res:-451626.67,status:'Apurado'},
+    {comp:'DEZEMBRO 2024',res:13526.53,status:'Apurado'},
+    {comp:'NOVEMBRO 2024',res:-757424.27,status:'Apurado'},
+  ];
+}
+
+function carregarRFPadrao() {
+  DB.rendafixa = [
+    {tipo:'CDB',emissor:'Banco Fibra S.A.',venc:'23/08/2026',taxa:'IPCA + 6,00%',qtd:140,preco:1693.68,liq:222548.09,bruto:237115.40},
+    {tipo:'CDB',emissor:'Banco BTG Pactual S.A.',venc:'27/03/2028',taxa:'CDI',qtd:3653743,preco:0.0101,liq:36708.63,bruto:36835.94},
+    {tipo:'CDB',emissor:'Banco BTG Pactual S.A.',venc:'10/04/2028',taxa:'CDI',qtd:19662958,preco:0.0100,liq:196728.92,bruto:197163.62},
+    {tipo:'CDB',emissor:'Ouribank S.A.',venc:'18/09/2028',taxa:'IPCA + 8,25%',qtd:150,preco:1077.14,liq:159257.33,bruto:161571.66},
+    {tipo:'CDCA',emissor:'BTG Pactual Commodities',venc:'16/07/2029',taxa:'11,69% a.a.',qtd:379,preco:1027.57,liq:389450.48,bruto:389450.48},
+    {tipo:'CRI',emissor:'Banco BTG Pactual S.A.',venc:'15/01/2027',taxa:'102,00% CDI',qtd:67,preco:1036.72,liq:69460.56,bruto:69460.56},
+    {tipo:'CRA',emissor:'BTG Commodities',venc:'15/12/2033',taxa:'IPCA + 6,01%',qtd:500,preco:1141.05,liq:570526.33,bruto:570526.33},
+    {tipo:'CRA',emissor:'BTG Commodities',venc:'15/12/2033',taxa:'105,00% CDI',qtd:500,preco:1048.43,liq:524213.35,bruto:524213.35},
+    {tipo:'Compromissada',emissor:'Banco BTG Pactual S.A.',venc:'-',taxa:'70,00% CDI',qtd:1,preco:795039.90,liq:795039.90,bruto:795039.90},
+  ];
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+function renderAll() {
+  renderDash();
+  renderCart();
+  renderOps();
+  renderIR();
+  renderDiv();
+  renderLiq();
+  renderRF();
+  renderAliases();
+}
 
 // ============================================================
 // NAVIGATION
 // ============================================================
-function pg(id){
+function pg(id, btn) {
   document.querySelectorAll('.pg').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
   document.getElementById('pg-'+id).classList.add('on');
-  event.target.classList.add('on');
-  render(id);
-}
-function render(id){
-  if(id==='carteira')renderCart();
-  if(id==='ir')renderIR();
-  if(id==='dividendos')renderDiv();
-  if(id==='liquidez')renderLiq();
-  if(id==='rendafixa')renderRF();
-  if(id==='operacoes')renderOps();
-  if(id==='config')renderAliases();
+  if(btn) btn.classList.add('on');
 }
 
-// ============================================================
-// DASHBOARD DATE
-// ============================================================
 document.getElementById('dt-hoje').textContent = new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long',year:'numeric'});
+// Set today's date on inputs
+document.querySelectorAll('input[type=date]').forEach(el => { if(!el.value) el.value = hoje(); });
+
+// ============================================================
+// DASHBOARD
+// ============================================================
+function renderDash() {
+  const totalBruto = DB.carteira.reduce((s,a)=>s+a.qtd*a.px,0);
+  const totalFin = DB.carteira.reduce((s,a)=>s+a.qtd*a.pmAq,0);
+  const rent = totalFin>0?(totalBruto-totalFin)/totalFin*100:0;
+
+  document.getElementById('k-pat').textContent = fmt(DB.config.patrimonio);
+  document.getElementById('k-acoes').textContent = fmt(totalBruto);
+  document.getElementById('k-rent').textContent = fmtP(rent);
+  document.getElementById('k-rent').className = 'kpi-sub '+(rent>=0?'pos':'neg');
+  document.getElementById('k-saldo').textContent = fmt(DB.config.saldoInv);
+  document.getElementById('k-fut').textContent = fmt(DB.config.transito);
+
+  // Caixa
+  document.getElementById('cx-inv') && (document.getElementById('cx-inv').textContent = fmt(DB.config.saldoInv));
+  document.getElementById('cx-cc') && (document.getElementById('cx-cc').textContent = fmt(DB.config.cc));
+  document.getElementById('cx-trans') && (document.getElementById('cx-trans').innerHTML = `<strong>${fmt(DB.config.transito)}</strong>`);
+
+  // Últimas ops
+  const tb = document.getElementById('tb-ult-ops');
+  if(tb) tb.innerHTML = DB.operacoes.slice(0,5).map(o=>`<tr>
+    <td>${o.dt}</td><td><strong>${o.tk}</strong></td>
+    <td><span class="badge ${o.tipo==='V'?'b-red':'b-green'}">${o.tipo}</span></td>
+    <td>${Number(o.qtd).toLocaleString('pt-BR')}</td>
+    <td>${fmt(o.px,3)}</td>
+    <td>${o.resultado!=null?`<span class="${o.resultado>=0?'pos':'neg'}">${fmt(o.resultado)}</span>`:'—'}</td>
+  </tr>`).join('') || '<tr><td colspan="6" class="neu" style="text-align:center">Nenhuma operação registrada</td></tr>';
+
+  // IR resumo
+  const irDiv = document.getElementById('dash-ir-resumo');
+  if(irDiv) {
+    const totalIRMes = DB.ir.reduce((s,v)=>s+v.qtd*(v.pv-v.pm),0);
+    const acum = DB.irhist.reduce((s,h)=>s+(h.res<0?h.res*0.15:0),0);
+    irDiv.innerHTML = `
+      <div class="alert a-warn">IR Acumulado Jul/2021→Mar/2026: <strong>${fmt(acum)}</strong></div>
+      <div class="alert ${totalIRMes>=0?'a-ok':'a-warn'}">Resultado Abril/2026: <strong>${fmt(totalIRMes)}</strong> | IR: <strong>${fmt(totalIRMes>0?totalIRMes*0.15:0)}</strong></div>
+    `;
+  }
+}
 
 // ============================================================
 // CARTEIRA
 // ============================================================
-function renderCart(){
+function renderCart() {
   const body = document.getElementById('tb-cart-body');
   const foot = document.getElementById('tb-cart-foot');
-  let totalFin=0,totalBruto=0,totalGanho=0,totalDiv=0;
-  
-  body.innerHTML = carteira.map((a,i)=>{
-    const fin = a.qtd * a.pmAq;
-    const bruto = a.qtd * a.px;
-    const ganho = bruto - fin;
-    const rent = fin>0 ? (ganho/fin)*100 : 0;
-    totalFin+=fin; totalBruto+=bruto; totalGanho+=ganho; totalDiv+=a.div||0;
-    const isAlias = a.alias || Object.values(aliases).includes(a.tk);
-    return `<tr class="${isAlias?'y-row':''}">
+  if(!body) return;
+  let tF=0,tB=0,tG=0,tD=0;
+
+  body.innerHTML = DB.carteira.map((a,i)=>{
+    const fin=a.qtd*a.pmAq, bruto=a.qtd*a.px, ganho=bruto-fin;
+    const rent=fin>0?(ganho/fin)*100:0;
+    tF+=fin; tB+=bruto; tG+=ganho; tD+=a.div||0;
+    return `<tr class="${a.alias?'y-row':''}">
       <td><span class="badge b-gray">${a.mkt}</span></td>
-      <td><strong>${a.tk}</strong>${isAlias?' <span class="badge b-gold">alias</span>':''}</td>
+      <td><strong>${a.tk}</strong>${a.alias?' <span class="badge b-gold">alias</span>':''}</td>
       <td>${Number(a.qtd).toLocaleString('pt-BR')}</td>
       <td>${fmt(a.pmAq,3)}</td>
       <td>${fmt(a.pmReal,2)}</td>
       <td>${fmt(fin)}</td>
       <td><strong>${fmt(a.px,2)}</strong></td>
       <td>${fmt(bruto)}</td>
-      <td class="neu">—</td>
+      <td class="neu" id="pct-${i}">—</td>
       <td class="${ganho>=0?'pos':'neg'}">${fmt(ganho)}</td>
       <td class="${rent>=0?'pos':'neg'}">${fmtP(rent)}</td>
       <td class="pos">${a.div>0?fmt(a.div):'—'}</td>
       <td><span class="badge b-gray">${a.liq}</span></td>
-      <td class="neu" style="max-width:150px;overflow:hidden;text-overflow:ellipsis">${a.seg||'—'}</td>
+      <td class="neu">${a.seg||'—'}</td>
+      <td style="display:flex;gap:4px">
+        <button class="btn btn-out btn-sm" onclick="editarAcao(${i})" title="Editar">✏️</button>
+        <button class="btn btn-red btn-sm" onclick="removerAcao(${i})" title="Remover">✕</button>
+      </td>
     </tr>`;
-  }).join('');
+  }).join('') || '<tr><td colspan="15" class="neu" style="text-align:center;padding:20px">Nenhuma ação na carteira</td></tr>';
 
-  // Calcular %
-  document.querySelectorAll('#tb-cart-body tr').forEach((tr,i)=>{
-    const pct = totalBruto>0?(carteira[i].qtd*carteira[i].px/totalBruto*100):0;
-    tr.cells[8].textContent = pct.toFixed(1)+'%';
+  // % carteira
+  DB.carteira.forEach((_,i)=>{
+    const el=document.getElementById('pct-'+i);
+    if(el && tB>0) el.textContent=(DB.carteira[i].qtd*DB.carteira[i].px/tB*100).toFixed(1)+'%';
   });
 
-  const rentTotal = totalFin>0?(totalGanho/totalFin)*100:0;
-  foot.innerHTML=`<tr style="background:#f7f3ea;font-weight:800">
-    <td colspan="3">TOTAL EM AÇÕES</td>
-    <td></td><td></td>
-    <td>${fmt(totalFin)}</td><td></td>
-    <td>${fmt(totalBruto)}</td>
+  const rentT=tF>0?(tG/tF)*100:0;
+  if(foot) foot.innerHTML=`<tr style="background:#f7f3ea;font-weight:800">
+    <td colspan="3">TOTAL EM AÇÕES</td><td></td><td></td>
+    <td>${fmt(tF)}</td><td></td><td>${fmt(tB)}</td>
     <td>100%</td>
-    <td class="${totalGanho>=0?'pos':'neg'}">${fmt(totalGanho)}</td>
-    <td class="${rentTotal>=0?'pos':'neg'}">${fmtP(rentTotal)}</td>
-    <td class="pos">${fmt(totalDiv)}</td>
-    <td colspan="2"></td>
+    <td class="${tG>=0?'pos':'neg'}">${fmt(tG)}</td>
+    <td class="${rentT>=0?'pos':'neg'}">${fmtP(rentT)}</td>
+    <td class="pos">${fmt(tD)}</td>
+    <td colspan="3"></td>
   </tr>`;
 }
 
-function filtrarCart(q){
-  const rows = document.querySelectorAll('#tb-cart-body tr');
-  rows.forEach(r=>{
-    r.style.display = r.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+function filtrarCart(q) {
+  document.querySelectorAll('#tb-cart-body tr').forEach(r=>{
+    r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
   });
 }
 
-function aplicarPrecos(){
-  const txt = document.getElementById('precos-txt').value;
-  txt.split('\n').forEach(l=>{
-    const p = l.trim().split(/[\s\t,]+/);
-    if(p.length>=2){
-      const tk = p[0].toUpperCase();
-      const px = parseFloat(p[1].replace(',','.'));
-      if(!isNaN(px)){
-        const idx = carteira.findIndex(c=>c.tk===tk||c.tk===aliasOf(tk));
-        if(idx>=0) carteira[idx].px = px;
-      }
-    }
-  });
-  save(); renderCart(); closeModal('m-precos');
-  alert('✅ Preços atualizados!');
+function editarAcao(i) {
+  const a = DB.carteira[i];
+  document.getElementById('m-ac-idx').value = i;
+  document.getElementById('m-ac-tk').value = a.tk;
+  document.getElementById('m-ac-mkt').value = a.mkt;
+  document.getElementById('m-ac-qtd').value = a.qtd;
+  document.getElementById('m-ac-pm').value = a.pmAq;
+  document.getElementById('m-ac-pmr').value = a.pmReal;
+  document.getElementById('m-ac-px').value = a.px;
+  document.getElementById('m-ac-div').value = a.div||0;
+  document.getElementById('m-ac-liq').value = a.liq;
+  document.getElementById('m-ac-seg').value = a.seg||'';
+  openModal('m-acao');
 }
 
-function addAcaoCarteira(){
-  const tk = document.getElementById('m-ac-tk').value.toUpperCase();
-  if(!tk) return;
-  carteira.push({
-    tk, mkt:'RV',
+function removerAcao(i) {
+  const tk = DB.carteira[i].tk;
+  if(!confirm(`Remover ${tk} da carteira?\n\nUse esta opção quando a ação foi totalmente vendida.`)) return;
+  DB.carteira.splice(i,1);
+  renderCart(); renderDash();
+  syncAll();
+}
+
+function salvarAcaoCarteira() {
+  const idx = parseInt(document.getElementById('m-ac-idx').value);
+  const acao = {
+    tk: document.getElementById('m-ac-tk').value.toUpperCase(),
+    mkt: document.getElementById('m-ac-mkt').value,
     qtd: +document.getElementById('m-ac-qtd').value||0,
     pmAq: +document.getElementById('m-ac-pm').value||0,
     pmReal: +document.getElementById('m-ac-pmr').value||0,
     px: +document.getElementById('m-ac-px').value||0,
-    div: 0,
+    div: +document.getElementById('m-ac-div').value||0,
     liq: document.getElementById('m-ac-liq').value,
     seg: document.getElementById('m-ac-seg').value,
-  });
-  save(); renderCart(); closeModal('m-acao');
+    alias: false,
+  };
+  if(!acao.tk) return;
+  if(idx>=0) DB.carteira[idx]=acao;
+  else DB.carteira.push(acao);
+  renderCart(); renderDash();
+  syncAll();
+  closeModal('m-acao');
+  document.getElementById('m-ac-idx').value='-1';
 }
 
-function confirmarDivJCP(){
-  const tk = document.getElementById('m-dv-acao').value.toUpperCase();
-  const val = +document.getElementById('m-dv-val').value;
-  const idx = carteira.findIndex(c=>c.tk===tk);
-  if(idx>=0){ carteira[idx].div = (carteira[idx].div||0)+val; save(); renderCart(); }
+function confirmarDivJCP() {
+  const tk=document.getElementById('m-dv-acao').value.toUpperCase();
+  const val=+document.getElementById('m-dv-val').value;
+  const dt=document.getElementById('m-dv-dt').value;
+  const tipo=document.getElementById('m-dv-tipo').value;
+  const idx=DB.carteira.findIndex(c=>c.tk===tk);
+  if(idx>=0){ DB.carteira[idx].div=(DB.carteira[idx].div||0)+val; }
+  DB.dividendos.unshift({dt,acao:tk,tipo,val});
+  renderCart(); renderDiv(); renderDash();
+  syncAll();
   closeModal('m-divjcp');
+}
+
+// ============================================================
+// APLICAR PREÇOS
+// ============================================================
+function aplicarPrecos() {
+  const txt = document.getElementById('precos-txt').value;
+  let count=0;
+  txt.split('\n').forEach(l=>{
+    const p=l.trim().split(/[\s\t,]+/);
+    if(p.length>=2){
+      const tk=aliasOf(p[0].toUpperCase());
+      const px=parseFloat(p[1].replace(',','.'));
+      if(!isNaN(px) && px>0){
+        const idx=DB.carteira.findIndex(c=>c.tk===tk||c.tk===p[0].toUpperCase());
+        if(idx>=0){ DB.carteira[idx].px=px; count++; }
+      }
+    }
+  });
+  if(count>0){
+    renderCart(); renderDash();
+    syncAll();
+    showMsg('precos-msg',`✅ ${count} preço(s) atualizado(s) e salvos na planilha!`,'a-ok');
+  } else {
+    showMsg('precos-msg','⚠️ Nenhum ticker reconhecido. Verifique o formato.','a-warn');
+  }
 }
 
 // ============================================================
 // OPERAÇÕES
 // ============================================================
-function addOp(){
-  const dt = document.getElementById('op-dt').value;
-  const tipo = document.getElementById('op-tipo').value;
-  const tk = document.getElementById('op-tk').value.toUpperCase();
-  const qtd = +document.getElementById('op-qtd').value;
-  const px = +document.getElementById('op-px').value;
-  const nota = document.getElementById('op-nota').value;
-  const obs = document.getElementById('op-obs').value;
+function addOp() {
+  const dt=document.getElementById('op-dt').value;
+  const tipo=document.getElementById('op-tipo').value;
+  const tk=aliasOf(document.getElementById('op-tk').value.toUpperCase());
+  const qtd=+document.getElementById('op-qtd').value;
+  const px=+document.getElementById('op-px').value;
+  const nota=document.getElementById('op-nota').value;
+  const obs=document.getElementById('op-obs').value;
   if(!tk||!qtd||!px){showMsg('op-msg','⚠️ Preencha Ticker, Qtd e Preço','a-warn');return;}
-
-  const tkAlias = aliasOf(tk);
-  const cartIdx = carteira.findIndex(c=>c.tk===tkAlias||c.tk===tk);
-  const pmAntes = cartIdx>=0 ? carteira[cartIdx].pmAq : 0;
-  let pmNovo = pmAntes;
-  let resultado = null;
-
-  if(tipo==='C' && cartIdx>=0){
-    const qtdAtual = carteira[cartIdx].qtd;
-    const finAtual = qtdAtual * pmAntes;
-    const finNova = qtd * px;
-    pmNovo = (finAtual+finNova)/(qtdAtual+qtd);
-    carteira[cartIdx].qtd += qtd;
-    carteira[cartIdx].pmAq = pmNovo;
-  } else if(tipo==='C'){
-    carteira.push({tk:tkAlias,mkt:'RV',qtd,pmAq:px,pmReal:px,px,div:0,liq:'D+2',seg:''});
-    pmNovo=px;
-  } else if(tipo==='V' && cartIdx>=0){
-    resultado = (px-pmAntes)*qtd;
-    carteira[cartIdx].qtd -= qtd;
-    if(carteira[cartIdx].qtd<=0) carteira.splice(cartIdx,1);
-  }
-
-  operacoes.unshift({dt,tipo,tk:tkAlias,qtd,px,vol:qtd*px,pmAntes,pmNovo,resultado,nota,obs});
-  save(); renderOps(); renderCart();
-  showMsg('op-msg','✅ Operação registrada!','a-ok');
+  processarOperacao(dt,tipo,tk,qtd,px,nota,obs);
   limparOp();
+  showMsg('op-msg','✅ Operação registrada e salva!','a-ok');
 }
 
-function parsearNota(){
-  const txt = document.getElementById('nota-txt').value;
-  const dt = document.getElementById('nota-dt').value;
-  const nr = document.getElementById('nota-nr').value;
-  const linhas = txt.split('\n').filter(l=>l.includes('BOVESPA')||l.includes('Vista')||l.includes('VISTA'));
+function parsearNota() {
+  const txt=document.getElementById('nota-txt').value;
+  const dt=document.getElementById('nota-dt').value;
+  const nr=document.getElementById('nota-nr').value;
   let count=0;
-  linhas.forEach(l=>{
-    const m = l.match(/([CV])\s+VISTA\s+(\w+)\s+(?:ON|PN|CI)?\s*(?:D\s+)?\s*(\d+)\s+([\d.,]+)\s+([\d.,]+)/i);
+  txt.split('\n').forEach(l=>{
+    const m=l.match(/([CV])\s+VISTA\s+(\w+)\s+(?:ON|PN|CI|BNS\s+ORD\s+N\d)?\s*(?:D\s+)?\s*(\d+)\s+([\d.,]+)/i);
     if(m){
-      const tipo=m[1].toUpperCase()==='V'?'V':'C';
-      const tk=m[2].toUpperCase();
+      const tipo=m[1].toUpperCase();
+      const tk=aliasOf(m[2].toUpperCase());
       const qtd=parseInt(m[3]);
       const px=parseFloat(m[4].replace(',','.'));
-      if(tk&&qtd&&px){
-        const tkAlias=aliasOf(tk);
-        const cartIdx=carteira.findIndex(c=>c.tk===tkAlias||c.tk===tk);
-        const pmAntes=cartIdx>=0?carteira[cartIdx].pmAq:0;
-        let pmNovo=pmAntes;
-        let resultado=null;
-        if(tipo==='C'&&cartIdx>=0){
-          const q=carteira[cartIdx].qtd;
-          pmNovo=(q*pmAntes+qtd*px)/(q+qtd);
-          carteira[cartIdx].qtd+=qtd;
-          carteira[cartIdx].pmAq=pmNovo;
-        } else if(tipo==='C'){
-          carteira.push({tk:tkAlias,mkt:'RV',qtd,pmAq:px,pmReal:px,px,div:0,liq:'D+2',seg:''});
-          pmNovo=px;
-        } else if(tipo==='V'&&cartIdx>=0){
-          resultado=(px-pmAntes)*qtd;
-          carteira[cartIdx].qtd-=qtd;
-          if(carteira[cartIdx].qtd<=0) carteira.splice(cartIdx,1);
-        }
-        operacoes.unshift({dt:dt||new Date().toISOString().split('T')[0],tipo,tk:tkAlias,qtd,px,vol:qtd*px,pmAntes,pmNovo,resultado,nota:nr,obs:'Importado da nota'});
+      if(tk&&qtd&&px&&px<100000){
+        processarOperacao(dt,tipo,tk,qtd,px,nr,'Importado da nota');
         count++;
       }
     }
   });
-  save(); renderOps(); renderCart();
-  document.getElementById('nota-prev').innerHTML=`<div class="alert a-ok">✅ ${count} operação(ões) importada(s)!</div>`;
+  if(count>0){
+    showMsg('nota-msg',`✅ ${count} operação(ões) importada(s) e salvas!`,'a-ok');
+    renderCart(); renderDash();
+  } else {
+    showMsg('nota-msg','⚠️ Nenhuma operação detectada. Verifique o texto colado.','a-warn');
+  }
 }
 
-function renderOps(){
-  const tb = document.getElementById('tb-ops');
-  tb.innerHTML = operacoes.map((o,i)=>`<tr>
+function processarOperacao(dt,tipo,tk,qtd,px,nota,obs) {
+  const cartIdx=DB.carteira.findIndex(c=>c.tk===tk);
+  const pmAntes=cartIdx>=0?DB.carteira[cartIdx].pmAq:0;
+  let pmNovo=pmAntes, resultado=null;
+
+  if(tipo==='C'){
+    if(cartIdx>=0){
+      const q=DB.carteira[cartIdx].qtd;
+      pmNovo=(q*pmAntes+qtd*px)/(q+qtd);
+      DB.carteira[cartIdx].qtd+=qtd;
+      DB.carteira[cartIdx].pmAq=pmNovo;
+    } else {
+      DB.carteira.push({tk,mkt:'RV',qtd,pmAq:px,pmReal:px,px,div:0,liq:'D+2',seg:''});
+      pmNovo=px;
+    }
+  } else if(tipo==='V'){
+    resultado=(px-pmAntes)*qtd;
+    if(cartIdx>=0){
+      DB.carteira[cartIdx].qtd-=qtd;
+      if(DB.carteira[cartIdx].qtd<=0) DB.carteira.splice(cartIdx,1);
+    }
+  }
+
+  DB.operacoes.unshift({dt,tipo,tk,qtd,px,vol:qtd*px,pmAntes,pmNovo,resultado,nota:nota||'',obs:obs||''});
+  renderOps();
+  syncAll();
+}
+
+function renderOps() {
+  const tb=document.getElementById('tb-ops');
+  if(!tb) return;
+  tb.innerHTML=DB.operacoes.map((o,i)=>`<tr>
     <td>${o.dt}</td>
     <td><span class="badge ${o.tipo==='V'?'b-red':'b-green'}">${o.tipo==='V'?'VENDA':'COMPRA'}</span></td>
     <td><strong>${o.tk}</strong></td>
@@ -976,25 +1136,25 @@ function renderOps(){
     <td class="neu">${o.nota||'—'}</td>
     <td class="neu">${o.obs||'—'}</td>
     <td><button class="btn btn-red btn-sm" onclick="delOp(${i})">✕</button></td>
-  </tr>`).join('');
+  </tr>`).join('') || '<tr><td colspan="12" class="neu" style="text-align:center;padding:20px">Nenhuma operação registrada</td></tr>';
 }
 
-function delOp(i){ if(confirm('Remover operação?')){operacoes.splice(i,1);save();renderOps();} }
-function filtrarOps(q){ document.querySelectorAll('#tb-ops tr').forEach(r=>{ r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'; }); }
-function limparOp(){ ['op-tk','op-qtd','op-px','op-nota','op-obs'].forEach(id=>document.getElementById(id).value=''); document.getElementById('op-msg').innerHTML=''; }
+function delOp(i){if(confirm('Remover operação?')){DB.operacoes.splice(i,1);renderOps();syncAll();}}
+function filtrarOps(q){document.querySelectorAll('#tb-ops tr').forEach(r=>{r.style.display=r.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';});}
+function limparOp(){['op-tk','op-qtd','op-px','op-nota','op-obs'].forEach(id=>document.getElementById(id).value='');}
 function exportCSV(){
   const h='Data,Tipo,Ticker,Qtd,Preco,Volume,PM_Antes,PM_Novo,Resultado,Nota,Obs\n';
-  const r=operacoes.map(o=>[o.dt,o.tipo,o.tk,o.qtd,o.px,o.vol,o.pmAntes||'',o.pmNovo||'',o.resultado||'',o.nota||'',o.obs||''].join(',')).join('\n');
-  const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(h+r); a.download='operacoes_avin_btg.csv'; a.click();
+  const r=DB.operacoes.map(o=>[o.dt,o.tipo,o.tk,o.qtd,o.px,o.vol,o.pmAntes||'',o.pmNovo||'',o.resultado!=null?o.resultado:'',o.nota||'',o.obs||''].join(',')).join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(h+r);a.download='operacoes_avin_btg.csv';a.click();
 }
 
 // ============================================================
 // IR
 // ============================================================
 function autoIRpm(){
-  const tk = document.getElementById('ir-acao').value.toUpperCase();
-  const pm = pmCarteira(tk);
-  if(pm) document.getElementById('ir-pm').value = pm.toFixed(3);
+  const tk=document.getElementById('ir-acao').value.toUpperCase();
+  const item=DB.carteira.find(c=>c.tk===tk||c.tk===aliasOf(tk));
+  if(item) document.getElementById('ir-pm').value=item.pmAq.toFixed(3);
 }
 
 function addIR(){
@@ -1004,18 +1164,18 @@ function addIR(){
   const pm=+document.getElementById('ir-pm').value;
   const pv=+document.getElementById('ir-pv').value;
   const tipo=document.getElementById('ir-tipo').value;
-  if(!acao||!qtd||!pm||!pv) return;
-  irMes.push({dt,acao,qtd,pm,pv,tipo});
-  save(); renderIR();
+  if(!acao||!qtd||!pm||!pv){showMsg('ir-msg','⚠️ Preencha todos os campos','a-warn');return;}
+  DB.ir.push({dt,acao,qtd,pm,pv,tipo});
+  renderIR(); syncAll();
+  showMsg('ir-msg','✅ Venda registrada!','a-ok');
 }
 
 function renderIR(){
-  const tb = document.getElementById('tb-ir-mes');
+  const tb=document.getElementById('tb-ir-mes');
+  if(!tb) return;
   let total=0;
-  tb.innerHTML = irMes.map((v,i)=>{
-    const valMed=v.qtd*v.pm;
-    const valVenda=v.qtd*v.pv;
-    const res=valVenda-valMed;
+  tb.innerHTML=DB.ir.map((v,i)=>{
+    const valMed=v.qtd*v.pm, valVenda=v.qtd*v.pv, res=valVenda-valMed;
     total+=res;
     return `<tr>
       <td>${v.dt||'—'}</td><td>${v.acao}</td>
@@ -1025,73 +1185,79 @@ function renderIR(){
       <td class="${res>=0?'pos':'neg'}">${fmt(res)}</td>
       <td><button class="btn btn-red btn-sm" onclick="delIR(${i})">✕</button></td>
     </tr>`;
-  }).join('');
-  const aliq = 0.15;
-  const ir = total>0?total*aliq:0;
-  document.getElementById('ir-res').innerHTML=`
-    <strong>RESULTADO PROJETADO:</strong> <span class="${total>=0?'pos':'neg'}" style="font-size:15px">${fmt(total)}</span>
+  }).join('') || '<tr><td colspan="9" class="neu" style="text-align:center;padding:20px">Nenhuma venda registrada</td></tr>';
+
+  const aliq=0.15, ir=total>0?total*aliq:0;
+  const res=document.getElementById('ir-res');
+  if(res) res.innerHTML=`<strong>RESULTADO PROJETADO:</strong> <span class="${total>=0?'pos':'neg'}" style="font-size:15px">${fmt(total)}</span>
     &nbsp;&nbsp;|&nbsp;&nbsp;
     <strong>IR PROJETADO (15%):</strong> <span style="color:#e65100;font-size:15px">${fmt(ir)}</span>
-    ${total<0?'<br><span class="neg">⚠️ Prejuízo — abate saldo acumulado</span>':''}
-  `;
+    ${total<0?'<br><span class="neg" style="font-size:12px">⚠️ Prejuízo — será abatido do saldo acumulado</span>':''}`;
 
-  const tbH = document.getElementById('tb-ir-hist');
+  const tbH=document.getElementById('tb-ir-hist');
+  if(!tbH) return;
   let acum=0;
-  tbH.innerHTML = irHist.map(h=>{
-    const ir2=h.res>0?h.res*0.15:0;
-    acum+=ir2>0?ir2:(h.res*0.15);
+  tbH.innerHTML=DB.irhist.map((h,i)=>{
+    const ir2=h.res*0.15; acum+=ir2;
     return `<tr class="${h.res>=0?'ir-pos':'ir-neg'}">
       <td>${h.comp}</td>
       <td class="${h.res>=0?'pos':'neg'}">${fmt(h.res)}</td>
-      <td class="${ir2>=0?'pos':'neg'}">${fmt(h.res*0.15)}</td>
+      <td class="${ir2>=0?'pos':'neg'}">${fmt(ir2)}</td>
       <td><span class="badge ${h.status==='Apurado'?'b-green':'b-gray'}">${h.status}</span></td>
+      <td><button class="btn btn-red btn-sm" onclick="delIRHist(${i})">✕</button></td>
     </tr>`;
   }).join('');
-  tbH.innerHTML+=`<tr class="ir-tot"><td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → Mar/2026</td><td class="neg">-R$ 2.768.308,04</td><td></td></tr>`;
+  tbH.innerHTML+=`<tr style="background:var(--navy);color:#fff;font-weight:800">
+    <td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → Mar/2026</td>
+    <td class="neg">${fmt(acum)}</td><td colspan="2"></td>
+  </tr>`;
+  const lbl=document.getElementById('ir-acum-label');
+  if(lbl) lbl.textContent=fmt(acum);
 }
 
-function delIR(i){ irMes.splice(i,1); save(); renderIR(); }
+function delIR(i){DB.ir.splice(i,1);renderIR();syncAll();}
+function delIRHist(i){if(confirm('Remover esta competência?')){DB.irhist.splice(i,1);renderIR();syncAll();}}
 
 // ============================================================
 // DIVIDENDOS
 // ============================================================
+function parsearExtrato(){
+  const txt=document.getElementById('ext-txt').value;
+  let count=0;
+  txt.split('\n').forEach(l=>{
+    if(!/DIVIDENDO|JCP|JUROS S\/ CAPITAL|RENDIMENTO/i.test(l)) return;
+    const dtM=l.match(/^(\d{2}\/\d{2}\/\d{4})/);
+    const valM=l.match(/\s([\d]{1,3}(?:\.[\d]{3})*,[\d]{2})\s/);
+    const tkM=l.match(/[-–]\s+([A-Z]{4,6}\d{1,2})\b/);
+    if(dtM&&valM){
+      const val=parseFloat(valM[1].replace(/\./g,'').replace(',','.'));
+      const tipo=/JCP|JUROS/i.test(l)?'JCP':/RENDIMENTO/i.test(l)?'RENDIMENTO':'DIVIDENDO';
+      const acao=tkM?tkM[1]:'—';
+      DB.dividendos.unshift({dt:dtM[1],acao,tipo,val});
+      count++;
+    }
+  });
+  renderDiv(); syncAll();
+  const msg=document.getElementById('ext-msg')||document.getElementById('ext-prev');
+  if(msg) msg.innerHTML=`<div class="alert a-ok">✅ ${count} provento(s) detectado(s) e salvos!</div>`;
+  setTimeout(()=>{if(msg)msg.innerHTML=''},4000);
+}
+
 function addDiv(){
   const dt=document.getElementById('div-dt').value;
   const acao=document.getElementById('div-acao').value.toUpperCase();
   const tipo=document.getElementById('div-tipo').value;
   const val=+document.getElementById('div-val').value;
   if(!acao||!val) return;
-  dividendos.unshift({dt,acao,tipo,val});
-  save(); renderDiv();
-}
-
-function parsearExtrato(){
-  const txt = document.getElementById('ext-txt').value;
-  const linhas = txt.split('\n');
-  let count=0;
-  linhas.forEach(l=>{
-    const isDivJCP = /DIVIDENDO|JCP|JUROS S\/ CAPITAL|RENDIMENTO/i.test(l);
-    if(!isDivJCP) return;
-    const dtM = l.match(/^(\d{2}\/\d{2}\/\d{4})/);
-    const valM = l.match(/(\d{1,3}(?:\.\d{3})*,\d{2})\s+\d/);
-    const tkM = l.match(/[-–]\s+([A-Z]{4,5}\d{1,2})\b/)||l.match(/s\/\s+\w+\s+(?:\w+\s+){0,3}[-–]\s+([A-Z]{4,5}\d{1,2})/);
-    if(dtM&&valM){
-      const dt=dtM[1];
-      const val=parseFloat(valM[1].replace(/\./g,'').replace(',','.'));
-      const acao=tkM?tkM[1]:'—';
-      const tipo=/JCP|JUROS/i.test(l)?'JCP':/RENDIMENTO/i.test(l)?'RENDIMENTO':'DIVIDENDO';
-      dividendos.unshift({dt,acao,tipo,val});
-      count++;
-    }
-  });
-  save(); renderDiv();
-  document.getElementById('ext-prev').innerHTML=`<div class="alert a-ok">✅ ${count} provento(s) detectado(s)!</div>`;
+  DB.dividendos.unshift({dt,acao,tipo,val});
+  renderDiv(); syncAll();
 }
 
 function renderDiv(){
   const tb=document.getElementById('tb-div');
+  if(!tb) return;
   let total=0;
-  tb.innerHTML=dividendos.map((d,i)=>{
+  tb.innerHTML=DB.dividendos.map((d,i)=>{
     total+=d.val;
     return `<tr>
       <td>${d.dt||'—'}</td><td><strong>${d.acao}</strong></td>
@@ -1099,11 +1265,21 @@ function renderDiv(){
       <td class="pos"><strong>${fmt(d.val)}</strong></td>
       <td><button class="btn btn-red btn-sm" onclick="delDiv(${i})">✕</button></td>
     </tr>`;
-  }).join('');
-  document.getElementById('div-total').textContent=fmt(total);
+  }).join('') || '<tr><td colspan="5" class="neu" style="text-align:center;padding:20px">Nenhum provento registrado</td></tr>';
+  const tot=document.getElementById('div-total');
+  if(tot) tot.textContent=fmt(total);
+
+  // Totais por ação
+  const totais=document.getElementById('div-totais');
+  if(totais){
+    const por={};
+    DB.dividendos.forEach(d=>{por[d.acao]=(por[d.acao]||0)+d.val;});
+    const sorted=Object.entries(por).sort((a,b)=>b[1]-a[1]);
+    totais.innerHTML=sorted.map(([tk,v])=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f5f5f5"><strong>${tk}</strong><span class="pos">${fmt(v)}</span></div>`).join('')||'<span class="neu">Sem dados</span>';
+  }
 }
 
-function delDiv(i){ dividendos.splice(i,1); save(); renderDiv(); }
+function delDiv(i){DB.dividendos.splice(i,1);renderDiv();syncAll();}
 
 // ============================================================
 // LIQUIDEZ
@@ -1114,15 +1290,16 @@ function addLiq(){
   const ativo=document.getElementById('liq-ativo').value;
   const val=+document.getElementById('liq-val').value;
   if(!val) return;
-  liquidez.push({dt,tipo,ativo,val,status:'Previsto'});
-  liquidez.sort((a,b)=>a.dt.localeCompare(b.dt));
-  save(); renderLiq();
+  DB.liquidez.push({dt,tipo,ativo,val,status:'Previsto'});
+  DB.liquidez.sort((a,b)=>(a.dt||'').localeCompare(b.dt||''));
+  renderLiq(); syncAll();
 }
 
 function renderLiq(){
   const tb=document.getElementById('tb-liq');
+  if(!tb) return;
   let total=0;
-  tb.innerHTML=liquidez.map((l,i)=>{
+  tb.innerHTML=DB.liquidez.map((l,i)=>{
     total+=l.val;
     return `<tr>
       <td>${l.dt||'—'}</td>
@@ -1132,17 +1309,31 @@ function renderLiq(){
       <td><span class="badge ${l.status==='Confirmado'?'b-green':'b-gray'}">${l.status}</span></td>
       <td><button class="btn btn-red btn-sm" onclick="delLiq(${i})">✕</button></td>
     </tr>`;
-  }).join('');
-  document.getElementById('liq-total').textContent=fmt(total);
+  }).join('') || '<tr><td colspan="6" class="neu" style="text-align:center;padding:20px">Nenhum lançamento futuro</td></tr>';
+  const tot=document.getElementById('liq-total');
+  if(tot) tot.textContent=fmt(total);
 }
 
-function delLiq(i){ liquidez.splice(i,1); save(); renderLiq(); }
+function delLiq(i){DB.liquidez.splice(i,1);renderLiq();syncAll();}
+
+// ============================================================
+// SALDOS
+// ============================================================
+function salvarSaldos(){
+  DB.config.patrimonio=+document.getElementById('q-pat').value||DB.config.patrimonio;
+  DB.config.saldoInv=+document.getElementById('q-saldo').value||DB.config.saldoInv;
+  DB.config.transito=+document.getElementById('q-transito').value||DB.config.transito;
+  DB.config.cc=+document.getElementById('q-cc').value||DB.config.cc;
+  renderDash();
+  syncAll();
+  showMsg('saldo-msg','✅ Saldos salvos!','a-ok');
+}
 
 // ============================================================
 // RENDA FIXA
 // ============================================================
 function addRF(){
-  rendaFixa.push({
+  DB.rendafixa.push({
     tipo:document.getElementById('m-rf-tipo').value,
     emissor:document.getElementById('m-rf-emissor').value,
     venc:document.getElementById('m-rf-venc').value,
@@ -1152,182 +1343,172 @@ function addRF(){
     liq:+document.getElementById('m-rf-liq').value,
     bruto:+document.getElementById('m-rf-bruto').value,
   });
-  save(); renderRF(); closeModal('m-rf');
+  renderRF(); syncAll(); closeModal('m-rf');
 }
 
 function renderRF(){
   const tb=document.getElementById('tb-rf');
   const foot=document.getElementById('tb-rf-foot');
-  let totalLiq=0,totalBruto=0;
-  tb.innerHTML=rendaFixa.map((r,i)=>{
-    totalLiq+=r.liq; totalBruto+=r.bruto;
+  if(!tb) return;
+  let tL=0,tB=0;
+  tb.innerHTML=DB.rendafixa.map((r,i)=>{
+    tL+=r.liq; tB+=r.bruto;
     return `<tr>
       <td><span class="badge b-gold">${r.tipo}</span></td>
       <td>${r.emissor}</td><td>${r.venc}</td><td>${r.taxa}</td>
       <td>${Number(r.qtd).toLocaleString('pt-BR')}</td>
-      <td>${r.preco?fmtN(r.preco):'-'}</td>
       <td class="pos">${fmt(r.liq)}</td>
       <td>${fmt(r.bruto)}</td>
+      <td><button class="btn btn-red btn-sm" onclick="delRF(${i})">✕</button></td>
     </tr>`;
   }).join('');
-  foot.innerHTML=`<tr style="background:#f7f3ea;font-weight:800">
-    <td colspan="6">TOTAL RENDA FIXA</td>
-    <td class="pos">${fmt(totalLiq)}</td>
-    <td>${fmt(totalBruto)}</td>
+  if(foot) foot.innerHTML=`<tr style="background:#f7f3ea;font-weight:800">
+    <td colspan="5">TOTAL RENDA FIXA</td>
+    <td class="pos">${fmt(tL)}</td><td>${fmt(tB)}</td><td></td>
   </tr>`;
 }
 
+function delRF(i){if(confirm('Remover produto de renda fixa?')){DB.rendafixa.splice(i,1);renderRF();syncAll();}}
+
 // ============================================================
-// ALIASES CONFIG
+// ALIASES
 // ============================================================
 function addAlias(){
   const de=document.getElementById('al-de').value.toUpperCase();
   const para=document.getElementById('al-para').value.toUpperCase();
-  if(de&&para){ aliases[de]=para; save(); renderAliases(); document.getElementById('al-de').value=''; document.getElementById('al-para').value=''; }
+  if(de&&para){DB.aliases[de]=para;renderAliases();syncAll();document.getElementById('al-de').value='';document.getElementById('al-para').value='';}
 }
+
+function delAlias(de){delete DB.aliases[de];renderAliases();syncAll();}
 
 function renderAliases(){
   const el=document.getElementById('aliases-list');
-  el.innerHTML=Object.entries(aliases).map(([de,para])=>
-    `<span style="display:inline-flex;align-items:center;gap:4px;margin:3px;padding:3px 8px;background:#f8f5ef;border-radius:4px;font-size:12px">
-      <strong>${de}</strong> → ${para}
-      <button style="border:none;background:none;cursor:pointer;color:var(--red);font-size:14px;padding:0 2px" onclick="delAlias('${de}')">✕</button>
+  if(!el) return;
+  el.innerHTML=Object.entries(DB.aliases).map(([de,para])=>
+    `<span style="display:inline-flex;align-items:center;gap:4px;margin:3px;padding:3px 10px;background:#f8f5ef;border-radius:4px;font-size:12px;border:1px solid #e8d9b5">
+      <strong>${de}</strong> <span style="color:#999">→</span> ${para}
+      <button style="border:none;background:none;cursor:pointer;color:var(--red);font-size:14px;padding:0 2px;line-height:1" onclick="delAlias('${de}')">×</button>
     </span>`
-  ).join('');
+  ).join('') || '<span class="neu">Nenhum alias configurado</span>';
 }
 
-function delAlias(de){ delete aliases[de]; save(); renderAliases(); }
+// ============================================================
+// RELATÓRIOS — PDF em janela separada
+// ============================================================
+function gerarPDF(tipo) {
+  const dt = new Date().toLocaleDateString('pt-BR');
+  let html = '';
+  const estiloBase = `<style>
+    body{font-family:Arial,sans-serif;margin:0;padding:20px;color:#222}
+    .hdr{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid #b8953a;padding-bottom:12px;margin-bottom:20px}
+    .logo{font-size:18px;color:#1b2a4a}.logo span{color:#b8953a;font-weight:300;letter-spacing:3px}
+    .info{font-size:11px;color:#666;text-align:right;line-height:1.6}
+    table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px}
+    th{background:#f7f3ea;padding:6px 8px;text-align:left;border-bottom:2px solid #b8953a;font-weight:800}
+    td{padding:5px 8px;border-bottom:1px solid #eee}
+    .pos{color:#1a7a3c;font-weight:700}.neg{color:#c0392b;font-weight:700}
+    .tot td{background:#1b2a4a;color:#fff;font-weight:800}
+    .yrow td{background:#fffde7}
+    @media print{button{display:none}}
+  </style>`;
 
-// ============================================================
-// CONFIG
-// ============================================================
-function salvarConfig(){ alert('✅ Configurações salvas!'); }
-function testarSheet(){ document.getElementById('sheet-msg').innerHTML='<div class="alert a-info">ℹ️ Para integração completa com Google Sheets, configure o Apps Script conforme instruções enviadas ao e-mail.</div>'; }
-
-// ============================================================
-// RELATÓRIOS
-// ============================================================
-function gerarRel(tipo){
-  const prev=document.getElementById('rel-preview');
-  const content=document.getElementById('rel-content');
-  const dt=new Date().toLocaleDateString('pt-BR');
-  
-  let html='';
   if(tipo==='posicao'){
-    const totalFin=carteira.reduce((s,a)=>s+a.qtd*a.pmAq,0);
-    const totalBruto=carteira.reduce((s,a)=>s+a.qtd*a.px,0);
-    html=`<div style="font-family:Arial;padding:20px;max-width:900px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid #b8953a;padding-bottom:12px">
-        <div>
-          <div style="font-size:22px;font-weight:300;letter-spacing:3px;color:#b8953a">⟨ AVIN | btg pactual</div>
-          <div style="font-size:12px;color:#666;margin-top:4px">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · Conta 002403079 · Carteira BTG Pactual</div>
-        </div>
-        <div style="text-align:right;font-size:12px;color:#666"><strong>Data:</strong> ${dt}<br><strong>Conta aberta em:</strong> 30/03/2020</div>
-      </div>
-      <table style="width:100%;border-collapse:collapse;font-size:11px">
-        <thead><tr style="background:#f7f3ea">
-          <th style="padding:6px;border:1px solid #ddd">Mercado</th>
-          <th style="padding:6px;border:1px solid #ddd">Item</th>
-          <th style="padding:6px;border:1px solid #ddd">Qtd</th>
-          <th style="padding:6px;border:1px solid #ddd">PM Aq.</th>
-          <th style="padding:6px;border:1px solid #ddd">PM Real</th>
-          <th style="padding:6px;border:1px solid #ddd">Fin.Aq.</th>
-          <th style="padding:6px;border:1px solid #ddd">Preço Atual</th>
-          <th style="padding:6px;border:1px solid #ddd">Fin.Bruto</th>
-          <th style="padding:6px;border:1px solid #ddd">Rent.%</th>
-          <th style="padding:6px;border:1px solid #ddd">Div.&JCP</th>
-          <th style="padding:6px;border:1px solid #ddd">Liquidez</th>
-        </tr></thead>
-        <tbody>
-          ${carteira.map(a=>{
-            const fin=a.qtd*a.pmAq,bruto=a.qtd*a.px,ganho=bruto-fin,rent=fin>0?(ganho/fin)*100:0;
-            return `<tr style="${a.alias?'background:#fffde7':''}">
-              <td style="padding:5px;border:1px solid #eee">RV</td>
-              <td style="padding:5px;border:1px solid #eee"><strong>${a.tk}</strong></td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right">${Number(a.qtd).toLocaleString('pt-BR')}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(a.pmAq,3)}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(a.pmReal,2)}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(fin)}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right"><strong>${fmt(a.px,2)}</strong></td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(bruto)}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right;color:${rent>=0?'#1a7a3c':'#c0392b'}">${fmtP(rent)}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:right;color:#1a7a3c">${a.div>0?fmt(a.div):'—'}</td>
-              <td style="padding:5px;border:1px solid #eee;text-align:center">${a.liq}</td>
-            </tr>`;
-          }).join('')}
-          <tr style="background:#0d0d0d;color:#fff;font-weight:800">
-            <td colspan="5" style="padding:6px;text-align:right">TOTAL EM AÇÕES</td>
-            <td style="padding:6px;text-align:right">${fmt(totalFin)}</td>
-            <td></td>
-            <td style="padding:6px;text-align:right">${fmt(totalBruto)}</td>
-            <td style="padding:6px;text-align:right;color:${totalBruto-totalFin>=0?'#4caf50':'#ef5350'}">${fmtP((totalBruto-totalFin)/totalFin*100)}</td>
-            <td colspan="2"></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>`;
+    const tF=DB.carteira.reduce((s,a)=>s+a.qtd*a.pmAq,0);
+    const tB=DB.carteira.reduce((s,a)=>s+a.qtd*a.px,0);
+    html=`${estiloBase}
+    <div class="hdr">
+      <div class="logo"><span>AVIN</span> | <strong>BTG Pactual</strong><br><small style="font-size:10px;color:#666;letter-spacing:0">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · Conta 002403079</small></div>
+      <div class="info"><strong>RELATÓRIO DE POSIÇÃO</strong><br>Data: ${dt}<br>Conta aberta em: 30/03/2020</div>
+    </div>
+    <table>
+      <thead><tr><th>Mercado</th><th>Item</th><th>Qtd</th><th>PM Aq.</th><th>PM Real</th><th>Fin.Aq.</th><th>Preço Atual</th><th>Fin.Bruto</th><th>Rent.%</th><th>Div.&JCP</th><th>Liquidez</th></tr></thead>
+      <tbody>
+        ${DB.carteira.map(a=>{
+          const fin=a.qtd*a.pmAq,bruto=a.qtd*a.px,ganho=bruto-fin,rent=fin>0?(ganho/fin)*100:0;
+          return `<tr class="${a.alias?'yrow':''}">
+            <td>RV</td><td><strong>${a.tk}</strong></td>
+            <td style="text-align:right">${Number(a.qtd).toLocaleString('pt-BR')}</td>
+            <td style="text-align:right">${fmt(a.pmAq,3)}</td>
+            <td style="text-align:right">${fmt(a.pmReal,2)}</td>
+            <td style="text-align:right">${fmt(fin)}</td>
+            <td style="text-align:right"><strong>${fmt(a.px,2)}</strong></td>
+            <td style="text-align:right">${fmt(bruto)}</td>
+            <td style="text-align:right" class="${rent>=0?'pos':'neg'}">${fmtP(rent)}</td>
+            <td style="text-align:right;color:#1a7a3c">${a.div>0?fmt(a.div):'—'}</td>
+            <td style="text-align:center">${a.liq}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+      <tfoot><tr class="tot"><td colspan="5" style="text-align:right">TOTAL</td><td style="text-align:right">${fmt(tF)}</td><td></td><td style="text-align:right">${fmt(tB)}</td><td class="${tB-tF>=0?'pos':'neg'}">${fmtP((tB-tF)/tF*100)}</td><td colspan="2"></td></tr></tfoot>
+    </table>
+    <button onclick="window.print()" style="padding:8px 16px;background:#1b2a4a;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">🖨️ Imprimir / Salvar PDF</button>`;
   } else if(tipo==='ir'){
-    html=`<div style="font-family:Arial;padding:20px;max-width:700px">
-      <div style="border-bottom:2px solid #b8953a;padding-bottom:12px;margin-bottom:16px">
-        <div style="font-size:20px;color:#b8953a">⟨ AVIN | btg pactual — Relatório de IR</div>
-        <div style="font-size:12px;color:#666">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · ${dt}</div>
-      </div>
-      <h3 style="margin-bottom:8px">Vendas do Mês</h3>
-      <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px">
-        <thead><tr style="background:#f7f3ea"><th style="padding:6px;border:1px solid #ddd">Data</th><th style="padding:6px;border:1px solid #ddd">Ação</th><th style="padding:6px;border:1px solid #ddd">Qtd</th><th style="padding:6px;border:1px solid #ddd">PM</th><th style="padding:6px;border:1px solid #ddd">Preço Venda</th><th style="padding:6px;border:1px solid #ddd">Resultado</th></tr></thead>
-        <tbody>${irMes.map(v=>{const res=v.qtd*(v.pv-v.pm);return`<tr><td style="padding:5px;border:1px solid #eee">${v.dt||'—'}</td><td style="padding:5px;border:1px solid #eee">${v.acao}</td><td style="padding:5px;border:1px solid #eee;text-align:right">${Number(v.qtd).toLocaleString('pt-BR')}</td><td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(v.pm,3)}</td><td style="padding:5px;border:1px solid #eee;text-align:right">${fmt(v.pv,3)}</td><td style="padding:5px;border:1px solid #eee;text-align:right;color:${res>=0?'#1a7a3c':'#c0392b'}">${fmt(res)}</td></tr>`;}).join('')}</tbody>
-      </table>
-      <p><strong>IR Projetado Acumulado (Jul/2021→Mar/2026):</strong> <span style="color:#c0392b">-R$ 2.768.308,04</span></p>
-    </div>`;
+    const total=DB.ir.reduce((s,v)=>s+v.qtd*(v.pv-v.pm),0);
+    const acum=DB.irhist.reduce((s,h)=>s+h.res*0.15,0);
+    html=`${estiloBase}
+    <div class="hdr">
+      <div class="logo"><span>AVIN</span> | <strong>BTG Pactual</strong><br><small style="font-size:10px;color:#666">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · Conta 002403079</small></div>
+      <div class="info"><strong>RELATÓRIO DE IR</strong><br>Data: ${dt}</div>
+    </div>
+    <h3 style="margin-bottom:8px;color:#1b2a4a">Vendas do Mês — Abril/2026</h3>
+    <table>
+      <thead><tr><th>Data</th><th>Ação</th><th>Qtd</th><th>PM</th><th>Val.Médio</th><th>Preço Venda</th><th>Val.Venda</th><th>Resultado</th></tr></thead>
+      <tbody>${DB.ir.map(v=>{const res=v.qtd*(v.pv-v.pm);return`<tr><td>${v.dt||'—'}</td><td>${v.acao}</td><td style="text-align:right">${Number(v.qtd).toLocaleString('pt-BR')}</td><td style="text-align:right">${fmt(v.pm,3)}</td><td style="text-align:right">${fmt(v.qtd*v.pm)}</td><td style="text-align:right">${fmt(v.pv,3)}</td><td style="text-align:right">${fmt(v.qtd*v.pv)}</td><td style="text-align:right" class="${res>=0?'pos':'neg'}">${fmt(res)}</td></tr>`;}).join('')}</tbody>
+      <tfoot><tr class="tot"><td colspan="7" style="text-align:right">RESULTADO PROJETADO</td><td class="${total>=0?'pos':'neg'}">${fmt(total)}</td></tr><tr class="tot"><td colspan="7" style="text-align:right">IR PROJETADO (15%)</td><td style="color:#ffd54f">${fmt(total>0?total*0.15:0)}</td></tr></tfoot>
+    </table>
+    <p style="margin:16px 0 8px"><strong>IR Projetado Acumulado Jul/2021 → Mar/2026:</strong> <span class="neg">${fmt(acum)}</span></p>
+    <button onclick="window.print()" style="padding:8px 16px;background:#1b2a4a;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">🖨️ Imprimir / Salvar PDF</button>`;
   } else if(tipo==='status'){
-    html=`<div style="font-family:Arial;padding:20px;max-width:500px">
-      <div style="border-bottom:2px solid #b8953a;padding-bottom:12px;margin-bottom:16px">
-        <div style="font-size:20px;color:#b8953a">⟨ AVIN | btg pactual — Status da Conta</div>
-        <div style="font-size:12px;color:#666">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · ${dt}</div>
-      </div>
-      <table style="width:100%;border-collapse:collapse;font-size:13px">
-        <tr style="background:#fffde7"><td style="padding:8px;border:1px solid #eee">Patrimônio Total</td><td style="padding:8px;text-align:right;font-weight:800;color:#b8953a;border:1px solid #eee">R$ 36.685.711,07</td></tr>
-        <tr><td style="padding:8px;border:1px solid #eee">Renda Variável</td><td style="padding:8px;text-align:right;border:1px solid #eee">R$ 32.099.216,30</td></tr>
-        <tr><td style="padding:8px;border:1px solid #eee">Renda Fixa</td><td style="padding:8px;text-align:right;border:1px solid #eee">R$ 2.981.377,24</td></tr>
-        <tr><td style="padding:8px;border:1px solid #eee">Saldo Conta Investimento</td><td style="padding:8px;text-align:right;border:1px solid #eee">R$ 949,02</td></tr>
-        <tr><td style="padding:8px;border:1px solid #eee">Valores em Trânsito</td><td style="padding:8px;text-align:right;color:#b8953a;border:1px solid #eee">R$ 1.604.168,51</td></tr>
-        <tr><td style="padding:8px;border:1px solid #eee">Saldo Conta Corrente</td><td style="padding:8px;text-align:right;border:1px solid #eee">R$ 2.043,10</td></tr>
-      </table>
-    </div>`;
+    const tRF=DB.rendafixa.reduce((s,r)=>s+r.bruto,0);
+    html=`${estiloBase}
+    <div class="hdr">
+      <div class="logo"><span>AVIN</span> | <strong>BTG Pactual</strong><br><small style="font-size:10px;color:#666">ANTONIO LUIS RAMOS DE RESENDE JUNIOR · Conta 002403079</small></div>
+      <div class="info"><strong>STATUS DA CONTA</strong><br>Data: ${dt}</div>
+    </div>
+    <table>
+      <tbody>
+        <tr><td><strong>Patrimônio Total</strong></td><td style="text-align:right;font-size:18px;color:#b8953a"><strong>${fmt(DB.config.patrimonio)}</strong></td></tr>
+        <tr><td>Renda Variável (Ações)</td><td style="text-align:right">${fmt(DB.carteira.reduce((s,a)=>s+a.qtd*a.px,0))}</td></tr>
+        <tr><td>Renda Fixa</td><td style="text-align:right">${fmt(tRF)}</td></tr>
+        <tr><td>Saldo Conta Investimento</td><td style="text-align:right" class="pos">${fmt(DB.config.saldoInv)}</td></tr>
+        <tr style="background:#fffde7"><td><strong>🟡 Valores em Trânsito</strong></td><td style="text-align:right;color:#b8953a"><strong>${fmt(DB.config.transito)}</strong></td></tr>
+        <tr><td>Saldo Conta Corrente</td><td style="text-align:right">${fmt(DB.config.cc)}</td></tr>
+      </tbody>
+    </table>
+    <button onclick="window.print()" style="padding:8px 16px;background:#1b2a4a;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">🖨️ Imprimir / Salvar PDF</button>`;
   }
-  content.innerHTML=html;
-  prev.style.display='block';
-  prev.scrollIntoView({behavior:'smooth'});
+
+  const win=window.open('','_blank','width=1000,height=700');
+  win.document.write(`<!DOCTYPE html><html><head><title>AVIN BTG — ${tipo}</title></head><body>${html}</body></html>`);
+  win.document.close();
 }
 
+function gerarImgWhats(){
+  alert('📸 Para gerar imagem para WhatsApp:\n\n1. Clique em "Gerar PDF" do Relatório de Posição\n2. Na janela que abrir, use Ctrl+P\n3. Selecione "Salvar como PDF" ou "Microsoft Print to PDF"\n4. Salve e envie pelo WhatsApp\n\nAlternativamente, tire um print da tela da carteira.');
+}
+
+// ============================================================
+// EMAIL
+// ============================================================
 function enviarEmail(){
   const dest=document.getElementById('email-dest').value;
   if(!dest){showMsg('email-msg','⚠️ Informe o e-mail do destinatário','a-warn');return;}
-  showMsg('email-msg','ℹ️ Para envio automático por e-mail, configure o EmailJS ou Apps Script (instruções em avinbtgvinicius@gmail.com)','a-info');
+  showMsg('email-msg','ℹ️ Gerando relatório... Para envio automático configure o EmailJS na aba Config.','a-info',6000);
+  // Gera o PDF para o usuário imprimir/salvar
+  gerarPDF('posicao');
 }
 
 // ============================================================
 // MODAL
 // ============================================================
-function openModal(id){ document.getElementById(id).classList.add('open'); }
-function closeModal(id){ document.getElementById(id).classList.remove('open'); }
-document.querySelectorAll('.ov').forEach(m=>m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('open'); }));
-
-// ============================================================
-// UTILS UI
-// ============================================================
-function showMsg(id,msg,cls){ document.getElementById(id).innerHTML=`<div class="alert ${cls}">${msg}</div>`; setTimeout(()=>document.getElementById(id).innerHTML='',4000); }
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.ov').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
 
 // ============================================================
 // INIT
 // ============================================================
-renderCart();
-renderDiv();
-renderLiq();
-renderRF();
-renderOps();
-renderIR();
-renderAliases();
+carregarDados();
 </script>
 </body>
 </html>
