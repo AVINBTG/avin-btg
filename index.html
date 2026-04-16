@@ -724,62 +724,65 @@ function carregarCarteiraPadrao(){
 }
 
 function carregarIRHistPadrao(){
+  // Valores extraídos diretamente do relatório oficial (IR Projetado = resultado/0.15)
   DB.irhist=[
-    {comp:'MARÇO 2026',res:281329.60,status:'Apurado'},
-    {comp:'FEVEREIRO 2026',res:-1080974.07,status:'Apurado'},
-    {comp:'JANEIRO 2026',res:-2360498.00,status:'Apurado'},
-    {comp:'DEZEMBRO 2025',res:-5820.00,status:'Apurado'},
-    {comp:'NOVEMBRO 2025',res:-861032.00,status:'Apurado'},
-    {comp:'OUTUBRO 2025',res:-221080.33,status:'Apurado'},
-    {comp:'SETEMBRO 2025',res:569281.20,status:'Apurado'},
-    {comp:'AGOSTO 2025',res:24748.00,status:'Apurado'},
-    {comp:'JULHO 2025',res:221766.00,status:'Apurado'},
-    {comp:'JUNHO 2025',res:535028.00,status:'Apurado'},
-    {comp:'MAIO 2025',res:923380.00,status:'Apurado'},
-    {comp:'ABRIL 2025',res:104713.33,status:'Apurado'},
-    {comp:'MARÇO 2025',res:-80881.00,status:'Apurado'},
-    {comp:'FEVEREIRO 2025',res:76837.73,status:'Apurado'},
-    {comp:'JANEIRO 2025',res:-451626.67,status:'Apurado'},
-    {comp:'DEZEMBRO 2024',res:13526.53,status:'Apurado'},
-    {comp:'NOVEMBRO 2024',res:-757424.27,status:'Apurado'},
-    {comp:'OUTUBRO 2024',res:471799.93,status:'Apurado'},
-    {comp:'SETEMBRO 2024',res:-137593.67,status:'Apurado'},
-    {comp:'AGOSTO 2024',res:150260.30,status:'Apurado'},
-    {comp:'JULHO 2024',res:-271040.13,status:'Apurado'},
-    {comp:'JUNHO 2024',res:35326.30,status:'Apurado'},
-    {comp:'MAIO 2024',res:651988.93,status:'Apurado'},
-    {comp:'ABRIL 2024',res:688877.13,status:'Apurado'},
-    {comp:'MARÇO 2024',res:800780.20,status:'Apurado'},
-    {comp:'FEVEREIRO 2024',res:902680.07,status:'Apurado'},
-    {comp:'JANEIRO 2024',res:27825.00,status:'Apurado'},
-    {comp:'DEZEMBRO 2023',res:218544.00,status:'Apurado'},
-    {comp:'NOVEMBRO 2023',res:123787.60,status:'Apurado'},
-    {comp:'OUTUBRO 2023',res:102000.60,status:'Apurado'},
-    {comp:'JULHO 2023',res:109085.00,status:'Apurado'},
-    {comp:'JUNHO 2023',res:-277318.00,status:'Apurado'},
-    {comp:'MAIO 2023',res:-44299.00,status:'Apurado'},
-    {comp:'ABRIL 2023',res:88.97,status:'Apurado'},
-    {comp:'MARÇO 2023',res:-224899.80,status:'Apurado'},
-    {comp:'FEVEREIRO 2023',res:-292477.13,status:'Apurado'},
-    {comp:'JANEIRO 2023',res:-1250111.47,status:'Apurado'},
-    {comp:'DEZEMBRO 2022',res:-1636568.60,status:'Apurado'},
-    {comp:'NOVEMBRO 2022',res:-194564.80,status:'Apurado'},
-    {comp:'OUTUBRO 2022',res:-633862.60,status:'Apurado'},
-    {comp:'SETEMBRO 2022',res:-120138.53,status:'Apurado'},
-    {comp:'AGOSTO 2022',res:-1819562.73,status:'Apurado'},
-    {comp:'JULHO 2022',res:-1857411.87,status:'Apurado'},
-    {comp:'JUNHO 2022',res:-201757.00,status:'Apurado'},
-    {comp:'MAIO 2022',res:-1500948.33,status:'Apurado'},
-    {comp:'ABRIL 2022',res:-864589.80,status:'Apurado'},
-    {comp:'MARÇO 2022',res:-1276603.73,status:'Apurado'},
-    {comp:'FEVEREIRO 2022',res:-660903.27,status:'Apurado'},
-    {comp:'JANEIRO 2022',res:-1312333.53,status:'Apurado'},
-    {comp:'DEZEMBRO 2021',res:-1788839.13,status:'Apurado'},
-    {comp:'NOVEMBRO 2021',res:-1118335.20,status:'Apurado'},
-    {comp:'OUTUBRO 2021',res:-1708434.27,status:'Apurado'},
-    {comp:'SETEMBRO 2021',res:-976124.27,status:'Apurado'},
-    {comp:'AGOSTO 2021',res:-484118.27,status:'Apurado'},
-    {comp:'JULHO 2021',res:-58541.00,status:'Apurado'},
+    {comp:'MARÇO 2026',res:281329.60,status:'Apurado'},           // IR: 42.199,44
+    {comp:'FEVEREIRO 2026',res:-1080974.07,status:'Apurado'},     // IR: -162.146,10
+    {comp:'JANEIRO 2026',res:-2360498.00,status:'Apurado'},       // IR: -354.074,70
+    {comp:'DEZEMBRO 2025',res:-5820.00,status:'Apurado'},         // IR: -873,00
+    {comp:'NOVEMBRO 2025',res:-861032.40,status:'Apurado'},       // IR: -129.154,86
+    {comp:'OUTUBRO 2025',res:-221080.33,status:'Apurado'},        // IR: -33.162,05
+    {comp:'SETEMBRO 2025',res:569281.20,status:'Apurado'},        // IR: 85.392,18
+    {comp:'AGOSTO 2025',res:24748.00,status:'Apurado'},           // IR: 3.712,20
+    {comp:'JULHO 2025',res:221766.00,status:'Apurado'},           // IR: 33.264,90
+    {comp:'JUNHO 2025',res:535028.00,status:'Apurado'},           // IR: 80.254,20
+    {comp:'MAIO 2025',res:923380.00,status:'Apurado'},            // IR: 138.507,00
+    {comp:'ABRIL 2025',res:104713.33,status:'Apurado'},           // IR: 15.707,00
+    {comp:'MARÇO 2025',res:-80881.00,status:'Apurado'},           // Resultado: -12.132,15
+    {comp:'FEVEREIRO 2025',res:76837.73,status:'Apurado'},        // IR: 11.525,66
+    {comp:'JANEIRO 2025',res:-451626.67,status:'Apurado'},        // IR: -67.744,05
+    {comp:'DEZEMBRO 2024',res:13526.53,status:'Apurado'},         // IR: 2.028,98
+    {comp:'NOVEMBRO 2024',res:-757424.27,status:'Apurado'},       // IR: -113.713,64
+    {comp:'OUTUBRO 2024',res:471799.93,status:'Apurado'},         // IR: 70.769,99
+    {comp:'SETEMBRO 2024',res:-271040.13,status:'Apurado'},       // IR: -40.656,02
+    {comp:'AGOSTO 2024',res:150260.13,status:'Apurado'},          // IR: 22.539,02
+    {comp:'JULHO 2024',res:-35270.00,status:'Apurado'},           // IR: -5.290,49 (aprox)
+    {comp:'JUNHO 2024',res:651989.00,status:'Apurado'},           // IR: 97.798,34
+    {comp:'MAIO 2024',res:688877.00,status:'Apurado'},            // IR: 103.331,52
+    {comp:'ABRIL 2024',res:800780.20,status:'Apurado'},           // IR: 120.117,03
+    {comp:'MARÇO 2024',res:902680.07,status:'Apurado'},           // IR: 135.402,01
+    {comp:'FEVEREIRO 2024',res:27825.00,status:'Apurado'},        // IR: 4.173,75
+    {comp:'JANEIRO 2024',res:218544.00,status:'Apurado'},         // IR: 32.781,60
+    {comp:'DEZEMBRO 2023',res:123787.60,status:'Apurado'},        // IR: 18.568,14
+    {comp:'NOVEMBRO 2023',res:102000.60,status:'Apurado'},        // IR: 15.300,09
+    {comp:'OUTUBRO 2023',res:0,status:'Apurado'},                 // IR: 0
+    {comp:'SETEMBRO 2023',res:0,status:'Apurado'},                // IR: 0
+    {comp:'AGOSTO 2023',res:109085.00,status:'Apurado'},          // IR: 16.362,75
+    {comp:'JULHO 2023',res:-277318.00,status:'Apurado'},          // IR: -41.597,70
+    {comp:'JUNHO 2023',res:-44299.00,status:'Apurado'},           // IR: -6.644,85
+    {comp:'MAIO 2023',res:88.97,status:'Apurado'},                // IR: 13,35
+    {comp:'ABRIL 2023',res:-224899.80,status:'Apurado'},          // IR: -33.734,97
+    {comp:'MARÇO 2023',res:-292477.13,status:'Apurado'},          // IR: -43.871,52
+    {comp:'FEVEREIRO 2023',res:-1250111.47,status:'Apurado'},     // IR: -187.516,82
+    {comp:'JANEIRO 2023',res:-1636568.60,status:'Apurado'},       // IR: -245.485,29
+    {comp:'DEZEMBRO 2022',res:-194564.80,status:'Apurado'},       // IR: -29.184,72
+    {comp:'NOVEMBRO 2022',res:-633862.60,status:'Apurado'},       // IR: -95.079,39
+    {comp:'OUTUBRO 2022',res:-120138.53,status:'Apurado'},        // IR: -18.020,78
+    {comp:'SETEMBRO 2022',res:-1819562.73,status:'Apurado'},      // IR: -272.934,41
+    {comp:'AGOSTO 2022',res:-1857411.87,status:'Apurado'},        // IR: -278.611,83
+    {comp:'JULHO 2022',res:-201757.00,status:'Apurado'},          // IR: -30.263,55
+    {comp:'JUNHO 2022',res:-1500948.33,status:'Apurado'},         // IR: -225.142,25
+    {comp:'MAIO 2022',res:-864589.80,status:'Apurado'},           // IR: -129.688,47
+    {comp:'ABRIL 2022',res:-1276603.73,status:'Apurado'},         // IR: -191.490,56
+    {comp:'MARÇO 2022',res:-660903.27,status:'Apurado'},          // IR: -99.135,49
+    {comp:'FEVEREIRO 2022',res:-1312333.53,status:'Apurado'},     // IR: -196.850,03
+    {comp:'JANEIRO 2022',res:-1788839.13,status:'Apurado'},       // IR: -268.325,87
+    {comp:'DEZEMBRO 2021',res:-1118335.20,status:'Apurado'},      // IR: -167.750,28
+    {comp:'NOVEMBRO 2021',res:-1708434.27,status:'Apurado'},      // IR: -256.265,14
+    {comp:'OUTUBRO 2021',res:-976124.27,status:'Apurado'},        // IR: -146.418,59
+    {comp:'SETEMBRO 2021',res:-484118.27,status:'Apurado'},       // IR: -72.617,69
+    {comp:'AGOSTO 2021',res:-58541.00,status:'Apurado'},          // IR: -8.781,15
+    {comp:'JULHO 2021',res:0,status:'Apurado'},
   ];
 }
 
