@@ -1161,10 +1161,24 @@ function renderIR(){
     ${total<0?'<br><span class="neg" style="font-size:12px">⚠️ Prejuízo — abate saldo acumulado</span>':''}`;
 
   const tbH=document.getElementById('tb-ir-hist');if(!tbH)return;
-  let acum=0;
-  tbH.innerHTML=DB.irhist.map((h,i)=>{
-    // Usa o campo "ir" diretamente do relatório oficial
-    const irVal = h.ir !== undefined ? h.ir : h.res*0.15;
+
+  // Calcula resultado e IR do mês atual (Abril/2026) pelas vendas lançadas
+  const resMesAtual = DB.ir.reduce((s,v)=>s+v.qtd*(v.pv-v.pm),0);
+  const irMesAtual  = resMesAtual > 0 ? resMesAtual * 0.15 : 0;
+
+  // Linha do mês atual no topo
+  const linhaAtual = resMesAtual !== 0 ? `<tr class="${resMesAtual>=0?'ir-pos':'ir-neg'}" style="border:2px solid var(--gold)">
+    <td><strong>ABRIL 2026</strong> <span class="badge b-gold">Em curso</span></td>
+    <td class="${resMesAtual>=0?'pos':'neg'}">${fmt(resMesAtual)}</td>
+    <td class="${irMesAtual>=0?'pos':'neg'}">${fmt(irMesAtual)}</td>
+    <td><span class="badge b-gold">Em curso</span></td>
+    <td></td>
+  </tr>` : '';
+
+  let acum = irMesAtual; // começa com abril
+  tbH.innerHTML = linhaAtual + DB.irhist.map((h,i)=>{
+    const irVal = (h.ir !== undefined && h.ir !== 0) ? h.ir
+                : (h.res !== 0 ? h.res * 0.15 : 0);
     acum += irVal;
     return `<tr class="${h.res>=0?'ir-pos':'ir-neg'}">
       <td>${h.comp}</td>
@@ -1174,18 +1188,20 @@ function renderIR(){
       <td><button class="btn btn-red btn-sm" onclick="delIRHist(${i})">✕</button></td>
     </tr>`;
   }).join('');
-  tbH.innerHTML+=`<tr style="background:var(--navy);color:#fff;font-weight:800">
-    <td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → Mar/2026</td>
-    <td class="${acum>=0?'pos':'neg'}" style="color:${acum>=0?'#4caf50':'#ef9a9a'}">${fmt(acum)}</td><td colspan="2"></td></tr>`;
+
+  // Total acumulado — deve bater com -R$ 2.768.308,04 do relatório oficial
+  tbH.innerHTML += `<tr style="background:var(--navy);color:#fff;font-weight:800">
+    <td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → Abr/2026</td>
+    <td style="color:${acum>=0?'#4caf50':'#ef9a9a'}">${fmt(acum)}</td>
+    <td colspan="2"></td>
+  </tr>`;
   const lbl=document.getElementById('ir-acum-lbl');
   if(lbl)lbl.textContent=fmt(acum);
-  // Atualiza dashboard
   const di=document.getElementById('dash-ir');
-  const totalMes=DB.ir.reduce((s,v)=>s+v.qtd*(v.pv-v.pm),0);
   if(di)di.innerHTML=`
-    <div class="alert a-warn">IR Acumulado Jul/2021→Mar/2026: <strong>${fmt(acum)}</strong></div>
-    <div class="alert ${totalMes>=0?'a-ok':'a-warn'}">Resultado Abril/2026: <strong>${fmt(totalMes)}</strong></div>
-    <div class="alert a-info">IR Projetado Abril/2026: <strong>${fmt(totalMes>0?totalMes*0.15:0)}</strong></div>`;
+    <div class="alert a-warn">IR Acumulado Jul/2021→Abr/2026: <strong>${fmt(acum)}</strong></div>
+    <div class="alert ${resMesAtual>=0?'a-ok':'a-warn'}">Resultado Abril/2026: <strong>${fmt(resMesAtual)}</strong></div>
+    <div class="alert a-info">IR Projetado Abril/2026 (15%): <strong>${fmt(irMesAtual)}</strong></div>`;
 }
 function delIR(i){DB.ir.splice(i,1);renderIR();syncAll();}
 function delIRHist(i){if(confirm('Remover esta competência do histórico?')){DB.irhist.splice(i,1);renderIR();syncAll();}}
