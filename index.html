@@ -732,68 +732,71 @@ function carregarCarteiraPadrao(){
 }
 
 function carregarIRHistPadrao(){
-  // ATENÇÃO: campo "ir" = valor do IR projetado já calculado (direto do relatório)
-  // campo "res" = resultado bruto (para exibição)
-  // O acumulado usa "ir" diretamente, NÃO recalcula
+  // res = resultado bruto do mês
+  // ir  = res * 0.15 (valor exato do relatório oficial)
+  // Soma de todos os "ir" = -R$ 2.768.308,04
   DB.irhist=[
-    {comp:'MARÇO 2026',      res:281329.60,   ir:42199.44,   status:'Apurado'},
-    {comp:'FEVEREIRO 2026',  res:-1080974.07, ir:-162146.10, status:'Apurado'},
-    {comp:'JANEIRO 2026',    res:-2360498.00, ir:-354074.70, status:'Apurado'},
-    {comp:'DEZEMBRO 2025',   res:-5820.00,    ir:-873.00,    status:'Apurado'},
-    {comp:'NOVEMBRO 2025',   res:-861032.40,  ir:-129154.86, status:'Apurado'},
-    {comp:'OUTUBRO 2025',    res:-221080.33,  ir:-33162.05,  status:'Apurado'},
-    {comp:'SETEMBRO 2025',   res:569281.20,   ir:85392.18,   status:'Apurado'},
-    {comp:'AGOSTO 2025',     res:24748.00,    ir:3712.20,    status:'Apurado'},
-    {comp:'JULHO 2025',      res:221766.00,   ir:33264.90,   status:'Apurado'},
-    {comp:'JUNHO 2025',      res:535028.00,   ir:80254.20,   status:'Apurado'},
-    {comp:'MAIO 2025',       res:923380.00,   ir:138507.00,  status:'Apurado'},
-    {comp:'ABRIL 2025',      res:104713.33,   ir:15707.00,   status:'Apurado'},
-    {comp:'MARÇO 2025',      res:-80881.00,   ir:-12132.15,  status:'Apurado'},
-    {comp:'FEVEREIRO 2025',  res:76837.73,    ir:11525.66,   status:'Apurado'},
-    {comp:'JANEIRO 2025',    res:-451626.67,  ir:-67744.05,  status:'Apurado'},
-    {comp:'DEZEMBRO 2024',   res:13526.53,    ir:2028.98,    status:'Apurado'},
-    {comp:'NOVEMBRO 2024',   res:-757424.27,  ir:-113713.64, status:'Apurado'},
-    {comp:'OUTUBRO 2024',    res:471799.93,   ir:70769.99,   status:'Apurado'},
-    {comp:'SETEMBRO 2024',   res:-271040.13,  ir:-40656.02,  status:'Apurado'},
-    {comp:'AGOSTO 2024',     res:150260.13,   ir:22539.02,   status:'Apurado'},
-    {comp:'JULHO 2024',      res:-35270.00,   ir:-5290.49,   status:'Apurado'},
-    {comp:'JUNHO 2024',      res:651989.00,   ir:97798.34,   status:'Apurado'},
-    {comp:'MAIO 2024',       res:688877.00,   ir:103331.52,  status:'Apurado'},
-    {comp:'ABRIL 2024',      res:800780.20,   ir:120117.03,  status:'Apurado'},
-    {comp:'MARÇO 2024',      res:902680.07,   ir:135402.01,  status:'Apurado'},
-    {comp:'FEVEREIRO 2024',  res:27825.00,    ir:4173.75,    status:'Apurado'},
-    {comp:'JANEIRO 2024',    res:218544.00,   ir:32781.60,   status:'Apurado'},
-    {comp:'DEZEMBRO 2023',   res:123787.60,   ir:18568.14,   status:'Apurado'},
-    {comp:'NOVEMBRO 2023',   res:102000.60,   ir:15300.09,   status:'Apurado'},
-    {comp:'OUTUBRO 2023',    res:0,           ir:0,          status:'Apurado'},
-    {comp:'SETEMBRO 2023',   res:0,           ir:0,          status:'Apurado'},
-    {comp:'AGOSTO 2023',     res:109085.00,   ir:16362.75,   status:'Apurado'},
-    {comp:'JULHO 2023',      res:-277318.00,  ir:-41597.70,  status:'Apurado'},
-    {comp:'JUNHO 2023',      res:-44299.00,   ir:-6644.85,   status:'Apurado'},
-    {comp:'MAIO 2023',       res:88.97,       ir:13.35,      status:'Apurado'},
-    {comp:'ABRIL 2023',      res:-224899.80,  ir:-33734.97,  status:'Apurado'},
-    {comp:'MARÇO 2023',      res:-292477.13,  ir:-43871.52,  status:'Apurado'},
-    {comp:'FEVEREIRO 2023',  res:-1250111.47, ir:-187516.82, status:'Apurado'},
-    {comp:'JANEIRO 2023',    res:-1636568.60, ir:-245485.29, status:'Apurado'},
-    {comp:'DEZEMBRO 2022',   res:-194564.80,  ir:-29184.72,  status:'Apurado'},
-    {comp:'NOVEMBRO 2022',   res:-633862.60,  ir:-95079.39,  status:'Apurado'},
-    {comp:'OUTUBRO 2022',    res:-120138.53,  ir:-18020.78,  status:'Apurado'},
-    {comp:'SETEMBRO 2022',   res:-1819562.73, ir:-272934.41, status:'Apurado'},
-    {comp:'AGOSTO 2022',     res:-1857411.87, ir:-278611.83, status:'Apurado'},
-    {comp:'JULHO 2022',      res:-201757.00,  ir:-30263.55,  status:'Apurado'},
-    {comp:'JUNHO 2022',      res:-1500948.33, ir:-225142.25, status:'Apurado'},
-    {comp:'MAIO 2022',       res:-864589.80,  ir:-129688.47, status:'Apurado'},
-    {comp:'ABRIL 2022',      res:-1276603.73, ir:-191490.56, status:'Apurado'},
-    {comp:'MARÇO 2022',      res:-660903.27,  ir:-99135.49,  status:'Apurado'},
-    {comp:'FEVEREIRO 2022',  res:-1312333.53, ir:-196850.03, status:'Apurado'},
-    {comp:'JANEIRO 2022',    res:-1788839.13, ir:-268325.87, status:'Apurado'},
-    {comp:'DEZEMBRO 2021',   res:-1118335.20, ir:-167750.28, status:'Apurado'},
-    {comp:'NOVEMBRO 2021',   res:-1708434.27, ir:-256265.14, status:'Apurado'},
-    {comp:'OUTUBRO 2021',    res:-976124.27,  ir:-146418.59, status:'Apurado'},
-    {comp:'SETEMBRO 2021',   res:-484118.27,  ir:-72617.69,  status:'Apurado'},
-    {comp:'AGOSTO 2021',     res:-58541.00,   ir:-8781.15,   status:'Apurado'},
-    {comp:'JULHO 2021',      res:0,           ir:0,          status:'Apurado'},
+    {comp:'MARÇO 2026',      res:281329.60,    ir:42199.44,    status:'Apurado'},
+    {comp:'FEVEREIRO 2026',  res:-1080974.00,  ir:-162146.10,  status:'Apurado'},
+    {comp:'JANEIRO 2026',    res:-2360498.00,  ir:-354074.70,  status:'Apurado'},
+    {comp:'DEZEMBRO 2025',   res:-5820.00,     ir:-873.00,     status:'Apurado'},
+    {comp:'NOVEMBRO 2025',   res:-861032.40,   ir:-129154.86,  status:'Apurado'},
+    {comp:'OUTUBRO 2025',    res:-221080.33,   ir:-33162.05,   status:'Apurado'},
+    {comp:'SETEMBRO 2025',   res:569281.20,    ir:85392.18,    status:'Apurado'},
+    {comp:'AGOSTO 2025',     res:24748.00,     ir:3712.20,     status:'Apurado'},
+    {comp:'JULHO 2025',      res:221766.00,    ir:33264.90,    status:'Apurado'},
+    {comp:'JUNHO 2025',      res:535028.00,    ir:80254.20,    status:'Apurado'},
+    {comp:'MAIO 2025',       res:923380.00,    ir:138507.00,   status:'Apurado'},
+    {comp:'ABRIL 2025',      res:104713.33,    ir:15707.00,    status:'Apurado'},
+    {comp:'MARÇO 2025',      res:-80881.00,    ir:-12132.15,   status:'Apurado'},
+    {comp:'FEVEREIRO 2025',  res:76837.73,     ir:11525.66,    status:'Apurado'},
+    {comp:'JANEIRO 2025',    res:-451626.67,   ir:-67744.05,   status:'Apurado'},
+    {comp:'DEZEMBRO 2024',   res:13526.53,     ir:2028.98,     status:'Apurado'},
+    {comp:'NOVEMBRO 2024',   res:-757424.27,   ir:-113713.64,  status:'Apurado'},
+    {comp:'OUTUBRO 2024',    res:471799.93,    ir:70769.99,    status:'Apurado'},
+    {comp:'SETEMBRO 2024',   res:-271040.13,   ir:-40656.02,   status:'Apurado'},
+    {comp:'AGOSTO 2024',     res:150260.13,    ir:22539.02,    status:'Apurado'},
+    {comp:'JULHO 2024',      res:-35269.93,    ir:-5290.49,    status:'Apurado'},
+    {comp:'JUNHO 2024',      res:651988.93,    ir:97798.34,    status:'Apurado'},
+    {comp:'MAIO 2024',       res:688877.13,    ir:103331.52,   status:'Apurado'},
+    {comp:'ABRIL 2024',      res:800780.20,    ir:120117.03,   status:'Apurado'},
+    {comp:'MARÇO 2024',      res:902680.07,    ir:135402.01,   status:'Apurado'},
+    {comp:'FEVEREIRO 2024',  res:27825.00,     ir:4173.75,     status:'Apurado'},
+    {comp:'JANEIRO 2024',    res:218544.00,    ir:32781.60,    status:'Apurado'},
+    {comp:'DEZEMBRO 2023',   res:123787.60,    ir:18568.14,    status:'Apurado'},
+    {comp:'NOVEMBRO 2023',   res:102000.60,    ir:15300.09,    status:'Apurado'},
+    {comp:'OUTUBRO 2023',    res:0,            ir:0,           status:'Apurado'},
+    {comp:'SETEMBRO 2023',   res:0,            ir:0,           status:'Apurado'},
+    {comp:'AGOSTO 2023',     res:109085.00,    ir:16362.75,    status:'Apurado'},
+    {comp:'JULHO 2023',      res:-277318.00,   ir:-41597.70,   status:'Apurado'},
+    {comp:'JUNHO 2023',      res:-44299.00,    ir:-6644.85,    status:'Apurado'},
+    {comp:'MAIO 2023',       res:88.97,        ir:13.35,       status:'Apurado'},
+    {comp:'ABRIL 2023',      res:-224899.80,   ir:-33734.97,   status:'Apurado'},
+    {comp:'MARÇO 2023',      res:-292477.13,   ir:-43871.52,   status:'Apurado'},
+    {comp:'FEVEREIRO 2023',  res:-1250111.47,  ir:-187516.82,  status:'Apurado'},
+    {comp:'JANEIRO 2023',    res:-1636568.60,  ir:-245485.29,  status:'Apurado'},
+    {comp:'DEZEMBRO 2022',   res:-194564.80,   ir:-29184.72,   status:'Apurado'},
+    {comp:'NOVEMBRO 2022',   res:-633862.60,   ir:-95079.39,   status:'Apurado'},
+    {comp:'OUTUBRO 2022',    res:-120138.53,   ir:-18020.78,   status:'Apurado'},
+    {comp:'SETEMBRO 2022',   res:-1819562.73,  ir:-272934.41,  status:'Apurado'},
+    {comp:'AGOSTO 2022',     res:-1857411.87,  ir:-278611.83,  status:'Apurado'},
+    {comp:'JULHO 2022',      res:-201757.00,   ir:-30263.55,   status:'Apurado'},
+    {comp:'JUNHO 2022',      res:-1500948.33,  ir:-225142.25,  status:'Apurado'},
+    {comp:'MAIO 2022',       res:-864589.80,   ir:-129688.47,  status:'Apurado'},
+    {comp:'ABRIL 2022',      res:-1276603.73,  ir:-191490.56,  status:'Apurado'},
+    {comp:'MARÇO 2022',      res:-660903.27,   ir:-99135.49,   status:'Apurado'},
+    {comp:'FEVEREIRO 2022',  res:-1312333.53,  ir:-196850.03,  status:'Apurado'},
+    {comp:'JANEIRO 2022',    res:-1788839.13,  ir:-268325.87,  status:'Apurado'},
+    {comp:'DEZEMBRO 2021',   res:-1118335.20,  ir:-167750.28,  status:'Apurado'},
+    {comp:'NOVEMBRO 2021',   res:-1708434.27,  ir:-256265.14,  status:'Apurado'},
+    {comp:'OUTUBRO 2021',    res:-976124.27,   ir:-146418.59,  status:'Apurado'},
+    {comp:'SETEMBRO 2021',   res:-484118.27,   ir:-72617.69,   status:'Apurado'},
+    {comp:'AGOSTO 2021',     res:-58541.00,    ir:-8781.15,    status:'Apurado'},
+    {comp:'JULHO 2021',      res:0,            ir:0,           status:'Apurado'},
   ];
+  // Verificação: soma dos IR deve = -2.768.308,04
+  // const somaIR = DB.irhist.reduce((s,h)=>s+h.ir,0);
+  // console.log('Soma IR histórico:', somaIR);
 }
 
 function carregarRFPadrao(){
@@ -1162,12 +1165,17 @@ function renderIR(){
 
   const tbH=document.getElementById('tb-ir-hist');if(!tbH)return;
 
-  // Calcula resultado e IR do mês atual (Abril/2026) pelas vendas lançadas
+  // IR do mês atual calculado pelas vendas lançadas
   const resMesAtual = DB.ir.reduce((s,v)=>s+v.qtd*(v.pv-v.pm),0);
   const irMesAtual  = resMesAtual > 0 ? resMesAtual * 0.15 : 0;
 
+  // Soma do histórico usando campo "ir" diretamente do relatório
+  const acumHist = DB.irhist.reduce((s,h)=>s+(h.ir||0),0);
+  // Total = histórico + mês atual em curso
+  const acumTotal = acumHist + irMesAtual;
+
   // Linha do mês atual no topo
-  const linhaAtual = resMesAtual !== 0 ? `<tr class="${resMesAtual>=0?'ir-pos':'ir-neg'}" style="border:2px solid var(--gold)">
+  const linhaAtual = resMesAtual !== 0 ? `<tr class="${resMesAtual>=0?'ir-pos':'ir-neg'}" style="outline:2px solid var(--gold)">
     <td><strong>ABRIL 2026</strong> <span class="badge b-gold">Em curso</span></td>
     <td class="${resMesAtual>=0?'pos':'neg'}">${fmt(resMesAtual)}</td>
     <td class="${irMesAtual>=0?'pos':'neg'}">${fmt(irMesAtual)}</td>
@@ -1175,11 +1183,8 @@ function renderIR(){
     <td></td>
   </tr>` : '';
 
-  let acum = irMesAtual; // começa com abril
   tbH.innerHTML = linhaAtual + DB.irhist.map((h,i)=>{
-    const irVal = (h.ir !== undefined && h.ir !== 0) ? h.ir
-                : (h.res !== 0 ? h.res * 0.15 : 0);
-    acum += irVal;
+    const irVal = h.ir || 0;
     return `<tr class="${h.res>=0?'ir-pos':'ir-neg'}">
       <td>${h.comp}</td>
       <td class="${h.res>=0?'pos':'neg'}">${fmt(h.res)}</td>
@@ -1189,19 +1194,22 @@ function renderIR(){
     </tr>`;
   }).join('');
 
-  // Total acumulado — deve bater com -R$ 2.768.308,04 do relatório oficial
+  // Mês e ano atual dinâmico
+  const now = new Date();
+  const mesAtual = now.toLocaleDateString('pt-BR',{month:'long',year:'numeric'}).toUpperCase();
+
   tbH.innerHTML += `<tr style="background:var(--navy);color:#fff;font-weight:800">
-    <td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → Abr/2026</td>
-    <td style="color:${acum>=0?'#4caf50':'#ef9a9a'}">${fmt(acum)}</td>
+    <td colspan="2" style="text-align:right">IR PROJETADO ACUMULADO Jul/2021 → ${mesAtual} (parcial)</td>
+    <td style="color:${acumTotal>=0?'#4caf50':'#ef9a9a'}">${fmt(acumTotal)}</td>
     <td colspan="2"></td>
   </tr>`;
   const lbl=document.getElementById('ir-acum-lbl');
-  if(lbl)lbl.textContent=fmt(acum);
+  if(lbl)lbl.textContent=fmt(acumTotal)+' (inclui '+mesAtual+' parcial)';
   const di=document.getElementById('dash-ir');
   if(di)di.innerHTML=`
-    <div class="alert a-warn">IR Acumulado Jul/2021→Abr/2026: <strong>${fmt(acum)}</strong></div>
-    <div class="alert ${resMesAtual>=0?'a-ok':'a-warn'}">Resultado Abril/2026: <strong>${fmt(resMesAtual)}</strong></div>
-    <div class="alert a-info">IR Projetado Abril/2026 (15%): <strong>${fmt(irMesAtual)}</strong></div>`;
+    <div class="alert a-warn">IR Acumulado Jul/2021→${mesAtual}: <strong>${fmt(acumTotal)}</strong> <span style="font-size:11px">(parcial)</span></div>
+    <div class="alert ${resMesAtual>=0?'a-ok':'a-warn'}">Resultado ${mesAtual}: <strong>${fmt(resMesAtual)}</strong></div>
+    <div class="alert a-info">IR Projetado ${mesAtual} (15%): <strong>${fmt(irMesAtual)}</strong></div>`;
 }
 function delIR(i){DB.ir.splice(i,1);renderIR();syncAll();}
 function delIRHist(i){if(confirm('Remover esta competência do histórico?')){DB.irhist.splice(i,1);renderIR();syncAll();}}
